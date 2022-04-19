@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout">
+  <div :class="['main-layout', {'active': sidebarOpened}]">
     <VSidebar 
       class="sidebar"
       :isActive.sync="sidebarOpened"
@@ -35,8 +35,13 @@ export default {
 <style lang="scss" scoped>
   .main-layout {
     display: flex;
+    &.active {
+      .main-content, .sidebar {
+        transition: width .6s;
+      }
+    }
   } 
   .main-content, .sidebar {
-    transition: width .6s;
+    transition: width .5s;
   }
 </style>>

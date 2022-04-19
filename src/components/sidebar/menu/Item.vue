@@ -3,7 +3,7 @@
     <div class="list-item__inner">
       <component :is="`v-icon-${iconName}`" class="icon" />
       
-      <div class="text truncate" v-show="isActive">
+      <div class="text truncate" >
         {{ name }}
       </div>
 
@@ -58,12 +58,16 @@ export default {
 
   &:not(.active) {
     .list-item__inner {
+      transition: width 0.5s;
       position: relative;
       border-radius: 4px;
       height: 36px;
-      display: flex;
+      width: 36px;
+      padding: 8px;
+      overflow: hidden;
+      /* display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: center; */
       &:before {
         content: '';
         position: absolute;
@@ -119,6 +123,8 @@ export default {
 
 .list-item__inner {
   display: flex;
+  transition: width 0.5s;
+  width: 100%;
 }
 
 .icon {

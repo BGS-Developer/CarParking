@@ -1,8 +1,6 @@
 <template>
   <div class="header">
-    <div class="search">
-
-    </div>
+    <VSearch class="search" />
 
     <div class="panel-right">
       <VMenu />
@@ -12,10 +10,12 @@
 </template>
 
 <script>
+import VSearch from "./search"
 import VMenu from "./menu"
 import VProfile from "./profile"
 export default {
   components: {
+    VSearch,
     VMenu,
     VProfile
   }

@@ -71,4 +71,25 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 32px;
+  min-width: 70px;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  &.disabled {
+    cursor: default;
+  }
+}
+
+.fade-fast-enter-active, .fade-fast-leave-active {
+  transition: opacity .18s;
+}
+.fade-fast-enter, .fade-fast-leave-to {
+  opacity: 0;
+}
 </style>

@@ -4,13 +4,15 @@
             <slot name="button"></slot>
         </div>
 
-        <div v-show="open" ref="content"
-            class="dropdown__content"
-            :class="[placement, fixed ? 'fixed' : 'absolute', contentClasses, `w-${widthContent}`, `min-w-${minWidthContent}`]"
-            :style="style">
+        <transition name="fade-fast">
+            <div v-show="open" ref="content"
+                class="dropdown__content"
+                :class="[placement, fixed ? 'fixed' : 'absolute', contentClasses, `w-${widthContent}`, `min-w-${minWidthContent}`]"
+                :style="style">
 
-            <slot name="content"></slot>
-        </div>
+                <slot name="content"></slot>
+            </div>
+        </transition>
     </div>
 </template>
 
