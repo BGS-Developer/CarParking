@@ -40,7 +40,6 @@ body {
   font-family: "Product Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
@@ -91,5 +90,25 @@ body {
 }
 .fade-fast-enter, .fade-fast-leave-to {
   opacity: 0;
+}
+
+.b-card {
+  background: #FFFFFF;
+  border-radius: 4px;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  &-success {
+    background: #22C18F;
+  }
+  &-pending {
+    background: #FBB851;
+  }
+  &-failure {
+    background: #EC424C;
+  }
 }
 </style>

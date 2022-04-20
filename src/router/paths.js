@@ -1,6 +1,7 @@
 export default {
   home: '/',
   parkings: '/parkings',
+  parking: '/parkings/:id',
   parkingsSpaces: '/parkings-spaces',
   leads: '/leads',
   customers: '/customers',

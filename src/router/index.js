@@ -13,19 +13,27 @@ Vue.use(VueRouter)
   }, {
     path: paths.parkings,
     name: 'Parkings',
-    component: () => import('@/views/Parkings')
+    component: () => import('@/views/parkings/index')
+  }, {
+    path: paths.parking,
+    name: 'Parking',
+    meta: {
+      categoryName: "Parkings",
+      categoryUrl: paths.parkings
+    },
+    component: () => import('@/views/parkings/_id')
   }, {
     path: paths.parkingsSpaces,
     name: 'Parkings Spaces',
-    component: () => import('@/views/Parkings')
+    component: () => import('@/views/parkings/index')
   }, {
     path: paths.leads,
     name: 'Leads',
-    component: () => import('@/views/Parkings')
+    component: () => import('@/views/parkings/index')
   }, {
     path: paths.customers,
     name: 'Customers',
-    component: () => import('@/views/Parkings')
+    component: () => import('@/views/parkings/index')
   }
 ]
 

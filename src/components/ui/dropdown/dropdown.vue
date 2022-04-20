@@ -116,7 +116,7 @@
         cursor: pointer;
     }
     &__content {
-        margin-top: 5px;
+        margin-top: 10px;
         box-shadow: 0px 2px 4px rgba(5, 28, 63, 0.1);
         background-color: #fff;
         border-radius: 5px;

@@ -1,5 +1,6 @@
 export {default as VIconAdd} from "./Add"
 export {default as VIconAnnotation} from "./Annotation"
+export {default as VIconArrow} from "./Arrow"
 export {default as VIconArrowDown} from "./ArrowDown"
 export {default as VIconBell} from "./Bell"
 export {default as VIconBookings} from "./Bookings"
