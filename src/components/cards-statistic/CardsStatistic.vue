@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .cards-statistic {
-  padding: 20px 24px;
+  padding: 20px 22px;
   background: #F1F2F9;
   &__inner {
     display: flex;

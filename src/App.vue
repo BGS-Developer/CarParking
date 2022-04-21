@@ -64,6 +64,11 @@ h1 {
   margin: 0;
   letter-spacing: 0.41px;
 }
+
+h2 {
+  margin: 0;
+}
+
 ul {
   list-style-type: none;
   padding: 0;

@@ -7,17 +7,21 @@
     <span>Test</span>
 
     <VCardsStatistic :list="listStatistic" :gridColumns="3" />
+
+    <VInfo :data="info" />
   </VLayout>
 </template>
 
 <script>
 import VLayout from '@/layouts/Main'
 import VCardsStatistic from "@/components/cards-statistic"
+import VInfo from "@/components/parking/info"
 export default {
   name: 'Parking',
   components: {
     VLayout,
-    VCardsStatistic
+    VCardsStatistic,
+    VInfo
   },
 
   data: () => ({
@@ -67,7 +71,11 @@ export default {
         status: 'default',
         hasEdit: true
       }
-    ]
+    ],
+
+    info: {
+
+    }
   }),
 
   methods: {
