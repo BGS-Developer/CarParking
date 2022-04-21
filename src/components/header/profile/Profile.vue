@@ -23,9 +23,7 @@
         </div>
 
         <div class="button-wrapper">
-          <VButtonPrimary>
-            Logout 
-          </VButtonPrimary>
+          <VButtonPrimary :text="'Logout'" />
         </div>
       </div>
     </template>
@@ -67,7 +65,7 @@ export default {
   }
   &__content {
     width: auto;
-    padding: 18px;
+    padding: 14px;
     max-width: 230px;
 
     .avatar {
@@ -80,11 +78,13 @@ export default {
       font-size: 16px;
       font-weight: bold;
       color: #051C3F;
+      text-align: center;
     }
 
     .email {
       color: #52647E;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     .button-wrapper {

@@ -17,6 +17,7 @@
 }
 * {
   box-sizing: border-box;
+  font-family: "Product Sans";
 }
 body {
   margin: 0;
@@ -57,6 +58,18 @@ body {
 }
 
 //Global styles
+h1 {
+  font-weight: 700;
+  color: #000F26;
+  margin: 0;
+  letter-spacing: 0.41px;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -79,9 +92,15 @@ body {
   min-width: 70px;
   width: 100%;
   outline: none;
+  padding: 2px 12px;
   cursor: pointer;
   &.disabled {
     cursor: default;
+  }
+  .text {
+    margin-top: 1px;
+    font-size: 14px;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -95,20 +114,5 @@ body {
 .b-card {
   background: #FFFFFF;
   border-radius: 4px;
-}
-
-.circle {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  &-success {
-    background: #22C18F;
-  }
-  &-pending {
-    background: #FBB851;
-  }
-  &-failure {
-    background: #EC424C;
-  }
 }
 </style>

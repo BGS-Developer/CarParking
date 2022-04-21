@@ -1,17 +1,29 @@
 <template>
   <button :class="['button button-primary', {'disabled': disabled}]">
+    <div class="icon" v-if="iconName">
+      <component :is="`v-icon-${iconName}`" />
+    </div>
+
     <div class="text">
-      <slot />
+      {{ text }}
     </div>
   </button>
 </template>
 
 <script>
 export default {
+  components: {
+    ...require("@/components/svg-icons")
+  },
+
   props: {
+    iconName: {
+      type: String,
+      default: ''
+    },
     text: {
-        type: String,
-        default: ''
+      type: String,
+      default: ''
     },
     disabled: Boolean
   }
@@ -33,10 +45,13 @@ export default {
     background: #6195f6;
   }
 }
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
 .text {
-  font-weight: bold;
   line-height: 18px;
-  letter-spacing: 0.02em;
   color: #FFFFFF;
 }
 </style>

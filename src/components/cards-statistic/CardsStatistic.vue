@@ -1,7 +1,7 @@
 <template>
   <div class="cards-statistic">
     <div class="cards-statistic__inner">
-      <div class="card-statistic" v-for="item in list" :key="item.id">
+      <div class="card-statistic" v-for="item in list" :key="item.id" :style="`width: calc(100% / ${gridColumns})`">
         <VCardShortStatistic v-bind="item" />
       </div>
     </div>
@@ -19,6 +19,10 @@ export default {
     list: {
       type: Array,
       default: () => []
+    },
+    gridColumns: {
+      type: Number,
+      default: 4
     }
   }
 }
@@ -34,11 +38,10 @@ export default {
   }
 }
 .card-statistic {
-  width: calc(100% / 4);
   padding: 4px;
 
   @media (max-width: 1200px) {
-    width: calc(100% / 2);
+    width: calc(100% / 2) !important;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <VLayout>
-    <VHeaderCategory />
+    <VHeaderCategory :tabs="tabs" />
     <VCardsStatistic :list="listStatistic" />
   </VLayout>
 </template>
@@ -18,19 +18,33 @@ export default {
   },
 
   data: () => ({
+    tabs: [
+      {
+        id: 1,
+        name: 'All',
+        count: 32
+      }, {
+        id: 2,
+        name: 'Active'
+      }, {
+        id: 3,
+        name: 'Pending'
+      }, {
+        id: 4,
+        name: 'Cancelled'
+      }
+    ],
     listStatistic: [
       {
         id: 1,
         name: 'Current revenue',
         value: 245205,
         totalValue: 254098,
-        formatCurrency: 'USD',
-        status: ''
+        formatCurrency: 'USD'
       }, {
         id: 2,
         name: 'Expected',
         value: 248100,
-        totalValue: 0,
         formatCurrency: 'USD',
         status: 'success'
       }, {
@@ -43,8 +57,8 @@ export default {
         id: 4,
         name: 'Inactivated',
         value: 1,
-        totalValue: 0,
-        status: 'failure'
+        status: 'failure',
+        hasEdit: true
       }
     ]
   })

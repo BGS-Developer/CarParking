@@ -1,20 +1,68 @@
 <template>
   <div class="header-category">
     <div class="header-category__inner">
-      <div>
-
+      <div class="left-panel">
+        <h1 class="title-page">{{$route.name}}</h1>
+        <VTabs 
+          :list="tabs" 
+          :activeId.sync="activeTabId"
+          @change="emitActiveTabId" />
       </div>
 
-      <div>
-        
+      <div class="right-panel">
+        <VButtonPrimary 
+          :iconName="'add'" 
+          :text="'Add Parking'"/>
+
+        <VDropdownWithDots 
+          class="dropdown-dots" 
+          :list="dropdownList"
+          hasBorder
+          isClosesAfterSelection />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import VTabs from "@/components/ui/tabs"
+import { VButtonPrimary } from "@/components/ui/buttons"
+import VDropdownWithDots from "@/components/dropdowns/with-dots"
 export default {
+  components: {
+    VTabs,
+    VButtonPrimary,
+    VDropdownWithDots
+  },
 
+  props: {
+    tabs: {
+      type: Array,
+      default: () => []
+    }
+  },
+
+  data: () => ({
+    dropdownList: [
+      {
+        id: 1,
+        name: 'Test1'
+      }, {
+        id: 2,
+        name: 'Test2'
+      }, {
+        id: 3,
+        name: 'Test3'
+      }
+    ],
+    activeTabId: 1
+  }),
+
+  methods: {
+    emitActiveTabId() {
+      this.$emit('getActiveTabId', this.activeTabId)
+    }
+  }
 }
 </script>
 
@@ -23,6 +71,26 @@ export default {
   padding: 32px 24px 16px 24px;
   &__inner {
     display: flex;
+    justify-content: space-between;
   }
+}
+
+.left-panel {
+  display: flex;
+  align-items: center;
+}
+
+.title-page {
+  font-size: 22px;
+  line-height: 32px;
+  margin-right: 18px;
+  margin-top: -2px;
+}
+
+.right-panel {
+  display: flex;
+}
+.dropdown-dots {
+  margin-left: 8px;
 }
 </style>

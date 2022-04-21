@@ -1,24 +1,27 @@
 <template>
   <VLayout 
     hasSidebarCategory 
-    :sidebarCategoryList="list"
+    :sidebarCategoryList="listParkings"
     @getCategorySearch="findCategoryList">
 
     <span>Test</span>
+
+    <VCardsStatistic :list="listStatistic" :gridColumns="3" />
   </VLayout>
 </template>
 
 <script>
 import VLayout from '@/layouts/Main'
-
+import VCardsStatistic from "@/components/cards-statistic"
 export default {
   name: 'Parking',
   components: {
-    VLayout
+    VLayout,
+    VCardsStatistic
   },
 
   data: () => ({
-    list: [
+    listParkings: [
       {
         id: 1,
         url: '/parkings/1',
@@ -44,6 +47,25 @@ export default {
         url: '/parkings/5',
         name: 'Parking Name',
         description: '10 Blair Road, Glen Waverley, Vic...'
+      }
+    ],
+
+    listStatistic: [
+      {
+        id: 1,
+        name: 'Current revenue',
+        value: 298
+      }, {
+        id: 2,
+        name: 'Available spaces',
+        value: 40,
+        status: 'success'
+      }, {
+        id: 3,
+        name: 'All spaces',
+        value: 364,
+        status: 'default',
+        hasEdit: true
       }
     ]
   }),

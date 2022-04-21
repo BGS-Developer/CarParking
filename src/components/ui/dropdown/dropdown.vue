@@ -120,6 +120,7 @@
         box-shadow: 0px 2px 4px rgba(5, 28, 63, 0.1);
         background-color: #fff;
         border-radius: 5px;
+        z-index: 10;
         &.fixed {
             position: fixed;
         }

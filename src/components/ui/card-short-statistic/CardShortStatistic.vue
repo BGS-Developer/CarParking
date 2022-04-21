@@ -2,7 +2,7 @@
   <div class="b-card card-short-statistic">
     <div>
       <div class="name">
-        <div v-if="status" :class="[`circle circle-${status}`]"></div>
+        <VSmallCircle :status="status" />
         {{name}}
       </div>
 
@@ -14,16 +14,27 @@
     <div v-if="totalValue" class="percent">
       {{percent}}%
     </div>
+
+    <div v-if="hasEdit" class="icon-edit">
+      <VIconEdit @click="edit" />
+    </div>
   </div>
 </template>
 
 <script>
 import formatAmount from "@/helpers/formatAmount"
+import { VIconEdit } from "@/components/svg-icons"
+import VSmallCircle from "@/components/ui/small-circle"
 export default {
+  components: {
+    VIconEdit,
+    VSmallCircle
+  },
+
   props: {
     status: {
       type: String,
-      validator: (value) => ['success', 'pending', 'failure', ''].includes(value)
+      default: ''
     },
     name: {
       type: String,
@@ -46,7 +57,14 @@ export default {
       type: Number,
       default: 0
     },
+    hasEdit: Boolean,
     hasPercent: Boolean
+  },
+
+  methods: {
+    edit() {
+      this.$emit('edit')
+    }
   },
 
   computed: {
@@ -62,6 +80,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-short-statistic {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 12px 16px;
@@ -89,5 +108,22 @@ export default {
 }
 .circle {
   margin-right: 8px;
+}
+.icon-edit {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 8px;
+  cursor: pointer;
+  svg {
+    width: 16;
+    height: 16;
+    color: #8193AE;
+  }
+  &:hover {
+    svg {
+      color: #8193AE80;
+    }
+  }
 }
 </style>

@@ -12,7 +12,7 @@ Vue.use(VueRouter)
     component: Home
   }, {
     path: paths.parkings,
-    name: 'Parkings',
+    name: 'My parkings',
     component: () => import('@/views/parkings/index')
   }, {
     path: paths.parking,

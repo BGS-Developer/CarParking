@@ -113,6 +113,8 @@ export default {
   .button-open-sidebar, .button-close-sidebar {
     cursor: pointer;
     color: #8193AE;
+    display: flex;
+    justify-content: center;
     &:hover {
       color: #c5cfdf; 
     }
