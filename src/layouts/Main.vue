@@ -20,7 +20,7 @@
     <div class="main-content" :style="contentWidth">
       <VHeader />
 
-      <div>
+      <div class="main-content__inner">
         <slot />
       </div>
     </div>
@@ -108,5 +108,11 @@ export default {
   }
   .sidebar-wrapper {
     display: flex;
+  }
+  .main-content {
+    &__inner {
+      overflow-y: auto;
+      height: calc(100vh - 63px)
+    }
   }
 </style>>

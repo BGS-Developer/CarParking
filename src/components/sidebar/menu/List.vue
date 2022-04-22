@@ -31,5 +31,20 @@ export default {
   &.active {
     height: calc(100vh - 119px);
   }
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #051C3F;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #4981e9;
+    border-radius: 20px; 
+    border: 1px solid #4981e9;
+  }
 }
+
 </style>

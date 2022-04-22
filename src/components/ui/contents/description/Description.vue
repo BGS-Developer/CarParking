@@ -7,15 +7,9 @@
 </template>
 
 <script>
-import VLayout from "./../Layout"
+import mixin from "./../mixin"
 export default {
-  components: {
-    VLayout
-  },
-
-  props: {
-    title: String
-  }
+  mixins: [mixin],
 }
 </script>
 

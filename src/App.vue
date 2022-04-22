@@ -28,13 +28,13 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: #051C3F;
+  background: #dadcea;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #4981e9;
+  background-color: #bbc0c6;
   border-radius: 20px; 
-  border: 1px solid #4981e9;
+  border: 1px solid #bbc0c6;
 }
 
 #app {

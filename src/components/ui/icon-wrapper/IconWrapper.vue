@@ -1,5 +1,5 @@
 <template>
-  <div class="icon-wrapper">
+  <div :class="['icon-wrapper', {'active': isActive}]">
     <slot/>
   </div>
 </template>
