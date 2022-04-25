@@ -1,13 +1,18 @@
 <template>
-  <VDropdown class="dropdown-dots" ref="dropdown">
+  <VDropdown class="dropdown" ref="dropdown">
     <template v-slot:button>
-      <div :class="['dropdown-dots__button', {'border b-card': hasBorder}]">
-        <VIconDots class="icon-dots" />
+      <div :class="['dropdown__button']">
+        <div class="button-text">
+          {{text}}
+        </div>
+        <div class="button-icon">
+          <VIconArrowDown  />
+        </div>
       </div>
     </template>
 
     <template v-slot:content>
-      <div class="dropdown-dots__content b-card">
+      <div class="dropdown__content b-card">
         <ul class="list">
           <li v-for="item in list" :key="item.id" class="list__item" @click="select(item.id)">
             {{item.name}}
@@ -20,53 +25,52 @@
 
 <script>
 import VDropdown from "@/components/ui/dropdown"
-import { VIconDots } from "@/components/svg-icons"
+import { VIconArrowDown } from "@/components/svg-icons"
 export default {
   components: {
     VDropdown,
-    VIconDots
+    VIconArrowDown
   },
 
   props: {
+    text: {
+      type: String,
+      default: ''
+    },
     list: {
       type: Array,
       default: () => []
-    },
-    hasBorder: Boolean,
-    isClosesAfterSelection: Boolean
+    }
   },
 
   methods: {
     select(id) {
       this.$emit('change', id)
-      
-      if (this.isClosesAfterSelection) {
-        this.close()
-      }
+      this.close()
     },
 
     close() {
       this.$refs.dropdown.close()
     }
-  },
-
-  computed: {
-    
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.dropdown-dots {
+.dropdown {
   &__button {
-    width: 32px;
+    background-color: var(--highlight);
     height: 32px;
     display: flex;
     justify-content: center;
     align-items: center;
-    &.border {
-      border: 1px solid var(--border-color);
-    } 
+    color: var(--white-text);
+    &:hover {
+      background-color: var(--highlight-dm);
+      .button-icon {
+        border-left: 1px solid var(--highlight);
+      }
+    }
   }
   &__content {
     width: 154px;
@@ -82,6 +86,18 @@ export default {
     &:hover {
       background: #F6F7FB;
     }
+  }
+}
+.button {
+  &-text, &-icon {
+    height: 100%;
+  }
+  &-text {
+    padding: 7px 16px;
+  }
+  &-icon {
+    border-left: 1px solid var(--highlight-dm);
+    padding: 4px 8px;
   }
 }
 </style>

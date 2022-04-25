@@ -20,7 +20,7 @@
       </div>
 
       <div class="actions">
-
+        <slot name="actions" />
       </div>
     </div>
     <VTabsMenu class="tabs-menu" 
@@ -72,21 +72,23 @@ export default {
 .page-top {
   padding: 32px 37px 0 37px;
   &__inner {
+    display: flex;
+    justify-content: space-between;
     padding-bottom: 24px;
   }
-}
-.tabs-menu {
-
 }
 
 .main-info {
   display: flex;
+  align-items: center;
 }
+
 .image-wrapper {
   width: 80px;
   height: 80px;
   margin-right: 16px;
 }
+
 .description {
   display: flex;
   align-items: center;
@@ -111,6 +113,14 @@ export default {
         left: -14px;
       }
     }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  & > * {
+    margin-left: 16px;
   }
 }
 </style>

@@ -4,22 +4,9 @@
     :sidebarCategoryList="listParkings"
     @getCategorySearch="findCategoryList">
 
-    <VProfileTop 
-      :imageSrc="imageSrc"
-      :title="title"
-      :tabs="tabs.list"
-      :activeTabId="tabs.activeId"
-      @changeActiveTabId="setActiveTabId">
-
-      <template v-slot:description>
-        <div>
-          <VIconLocation class="icon-location" /> 
-          <span>500 S Lombard Rd, Unit A Addison, IL 60101</span>
-        </div>
-        <VStarRate :value="5" />
-        <VButtonStatus :status="'available'" />
-      </template>
-    </VProfileTop>
+    <VProfileTop
+      :data="data"
+      :tabs="tabs" />
 
     <div v-if="tabs.list[1].id === tabs.activeId">
       Test1
@@ -36,6 +23,8 @@
     <div v-else>
       <VCardsStatistic :list="listStatistic" :gridColumns="3" />
 
+      <VContactPersons />
+
       <VInfo :data="info" />
     </div>
   </VLayout>
@@ -43,27 +32,28 @@
 
 <script>
 import VLayout from '@/layouts/Main'
-import VProfileTop from "@/components/page-tops/single"
-import VStarRate from "@/components/ui/star-rate"
-import VButtonStatus from "@/components/ui/buttons/status"
+import VProfileTop from "@/components/parking/profile-top"
 import VCardsStatistic from "@/components/cards-statistic"
+import VContactPersons from "@/components/parking/contact-persons"
 import VInfo from "@/components/parking/info"
-import { VIconLocation } from "@/components/svg-icons"
+
 export default {
   name: 'Parking',
   components: {
     VLayout,
     VProfileTop,
-    VStarRate,
-    VButtonStatus,
     VCardsStatistic,
+    VContactPersons,
     VInfo,
-    VIconLocation
   },
 
   data: () => ({
-    imageSrc: "https://st.depositphotos.com/1812648/1480/i/600/depositphotos_14802233-stock-photo-autotrucks.jpg",
-    title: "Oxford Valley",
+    data: {
+      imageSrc: "https://st.depositphotos.com/1812648/1480/i/600/depositphotos_14802233-stock-photo-autotrucks.jpg",
+      title: "Oxford Valley",
+      address: "500 S Lombard Rd, Unit A Addison, IL 60101"
+    },
+
     tabs: {
       list: [
         {
@@ -157,17 +147,7 @@ export default {
       //TODO add request
       console.log('search', search)
     },
-
-    setActiveTabId(id) {
-      this.tabs.activeId = id
-    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-.icon-location {
-  color: #B5C0D0;
-  margin-right: 4px;
-}
-</style>

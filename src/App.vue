@@ -32,7 +32,8 @@
   --icons-default: #8193AE;
   --white-bg: #FFF;
   --white-text: #FFF;
-  --border-color: #E1E6EC;
+  --border-color: #B5C0D0;
+  --border-color-40: #E1E6EC;
   --bg-color: #F1F2F9;
   --select: #EBF2FE;
   --highlight-green: #22C18F;
