@@ -30,10 +30,14 @@
   --graphic-color: #B9C4E1;
   --alert: #FBF2F1;
   --icons-default: #8193AE;
-  --white-color: #FFF;
+  --white-bg: #FFF;
+  --white-text: #FFF;
   --border-color: #E1E6EC;
   --bg-color: #F1F2F9;
   --select: #EBF2FE;
+  --highlight-green: #22C18F;
+  --ratings: #F6D757;
+  --error: #EC424C;
 }
 
 body {
@@ -122,7 +126,7 @@ ul {
 }
 
 .b-card {
-  background: var(--white-color);
+  background: var(--white-bg);
   border-radius: 4px;
 }
 </style>

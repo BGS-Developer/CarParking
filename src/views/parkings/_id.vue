@@ -9,7 +9,17 @@
       :title="title"
       :tabs="tabs.list"
       :activeTabId="tabs.activeId"
-      @changeActiveTabId="setActiveTabId" />
+      @changeActiveTabId="setActiveTabId">
+
+      <template v-slot:description>
+        <div>
+          <VIconLocation class="icon-location" /> 
+          <span>500 S Lombard Rd, Unit A Addison, IL 60101</span>
+        </div>
+        <VStarRate :value="5" />
+        <VButtonStatus :status="'available'" />
+      </template>
+    </VProfileTop>
 
     <div v-if="tabs.list[1].id === tabs.activeId">
       Test1
@@ -28,23 +38,27 @@
 
       <VInfo :data="info" />
     </div>
-
-    
   </VLayout>
 </template>
 
 <script>
 import VLayout from '@/layouts/Main'
 import VProfileTop from "@/components/page-tops/single"
+import VStarRate from "@/components/ui/star-rate"
+import VButtonStatus from "@/components/ui/buttons/status"
 import VCardsStatistic from "@/components/cards-statistic"
 import VInfo from "@/components/parking/info"
+import { VIconLocation } from "@/components/svg-icons"
 export default {
   name: 'Parking',
   components: {
     VLayout,
     VProfileTop,
+    VStarRate,
+    VButtonStatus,
     VCardsStatistic,
-    VInfo
+    VInfo,
+    VIconLocation
   },
 
   data: () => ({
@@ -150,3 +164,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.icon-location {
+  color: #B5C0D0;
+  margin-right: 4px;
+}
+</style>

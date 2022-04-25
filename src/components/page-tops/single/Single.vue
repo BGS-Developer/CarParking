@@ -9,9 +9,13 @@
           hasRounded />
 
         <div>
-          <VTitleH1>
+          <VTitleH1 class="title">
             {{title}}
           </VTitleH1>
+
+          <div class="description">
+            <slot name="description" />
+          </div>
         </div>
       </div>
 
@@ -82,5 +86,31 @@ export default {
   width: 80px;
   height: 80px;
   margin-right: 16px;
+}
+.description {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  & > * {
+    height: inherit;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    &:not(:first-child) {
+      margin-left: 22px;
+      position: relative;
+      &:after {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 4px;
+        background: #B5C0D0;
+        border-radius: 50%;
+        position: absolute;
+        top: 11px;
+        left: -14px;
+      }
+    }
+  }
 }
 </style>
