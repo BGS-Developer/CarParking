@@ -15,7 +15,7 @@
   svg {
     width: 16px;
     height: 16px;
-    color: #051C3F;
+    color: var(--primary);
   }
 }
 </style>

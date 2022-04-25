@@ -1,39 +1,62 @@
 <template>
   <VLayout>
-    <VHeaderCategory :tabs="tabs" />
-    <VCardsStatistic :list="listStatistic" />
+    <VProfileTop 
+      :tabs="tabs.list" 
+      :activeTabId="tabs.activeId"
+      @changeActiveTabId="setActiveTabId" />
+
+    <div v-if="tabs.list[1].id === tabs.activeId">
+      Tab: Active 
+    </div>
+
+    <div v-else-if="tabs.list[2].id === tabs.activeId">
+      Tab: Pending
+    </div>
+
+    <div v-else-if="tabs.list[3].id === tabs.activeId">
+      Tab: Cancelled      
+    </div>
+    
+    <div v-else>
+      <VCardsStatistic 
+        :list="listStatistic" />
+    </div>
   </VLayout>
 </template>
 
 <script>
 import VLayout from '@/layouts/Main'
-import VHeaderCategory from "@/components/header-category"
+import VProfileTop from "@/components/page-tops/category"
 import VCardsStatistic from "@/components/cards-statistic"
 export default {
   name: 'Parkings',
   components: {
     VLayout,
-    VHeaderCategory,
+    VProfileTop,
     VCardsStatistic
   },
 
   data: () => ({
-    tabs: [
-      {
-        id: 1,
-        name: 'All',
-        count: 32
-      }, {
-        id: 2,
-        name: 'Active'
-      }, {
-        id: 3,
-        name: 'Pending'
-      }, {
-        id: 4,
-        name: 'Cancelled'
-      }
-    ],
+    tabs: {
+      list: [
+        {
+          id: 1,
+          name: 'All',
+          count: 32
+        }, {
+          id: 2,
+          name: 'Active',
+        }, {
+          id: 3,
+          name: 'Pending'
+        }, {
+          id: 4,
+          name: 'Cancelled'
+        }
+      ],
+      activeId: 1
+    },
+
     listStatistic: [
       {
         id: 1,
@@ -61,7 +84,13 @@ export default {
         hasEdit: true
       }
     ]
-  })
+  }),
+
+  methods: {
+    setActiveTabId(id) {
+      this.tabs.activeId = id
+    }
+  }
 }
 </script>
 

@@ -20,7 +20,7 @@ export default {
     },
     activeId: {
         type: Number,
-        default: 1
+        default: 0
     }
   },
 
@@ -40,16 +40,16 @@ export default {
 .tab {
     display: flex;
     padding: 4px 8px;
-    color: #52647E;
+    color: var(--sec-text);
     cursor: pointer;
     &.active {
-        color: #3879F0;
+        color: var(--highlight);
         .count {
-            background-color: #f6f6f6;
+            background-color: var(--select);
         }
     }
     &:hover:not(.active) {
-        color: #6196f5;
+        color: var(--highlight-dm);
     }
 }
 .name {
@@ -61,7 +61,7 @@ export default {
     font-size: 10px;
     line-height: 16px;
     border-radius: 13px;
-    background-color: #f4efef;
+    background-color: var(--bg-color);
     padding: 1px 6px;
     margin-left: 4px;
     margin-top: -1px;

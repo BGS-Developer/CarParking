@@ -5,7 +5,7 @@
         <h1 class="title-page">{{$route.name}}</h1>
         <VTabs 
           :list="tabs" 
-          :activeId.sync="activeTabId"
+          :activeId="activeTabId"
           @change="emitActiveTabId" />
       </div>
 
@@ -39,6 +39,10 @@ export default {
     tabs: {
       type: Array,
       default: () => []
+    },
+    activeTabId: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -54,13 +58,12 @@ export default {
         id: 3,
         name: 'Test3'
       }
-    ],
-    activeTabId: 1
+    ]
   }),
 
   methods: {
-    emitActiveTabId() {
-      this.$emit('getActiveTabId', this.activeTabId)
+    emitActiveTabId(id) {
+      this.$emit('changeActiveTabId', id)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="base-theme">
     <router-view/>
   </div>
 </template>
@@ -19,6 +19,23 @@
   box-sizing: border-box;
   font-family: "Product Sans";
 }
+
+.base-theme {
+  --primary: #051C3F;
+  --highlight: #3879F0;
+  --primary-text: #000F26;
+  --sec-text: #52647E;
+  --link-text: #0056F3;
+  --highlight-dm: #72A2F8;
+  --graphic-color: #B9C4E1;
+  --alert: #FBF2F1;
+  --icons-default: #8193AE;
+  --white-color: #FFF;
+  --border-color: #E1E6EC;
+  --bg-color: #F1F2F9;
+  --select: #EBF2FE;
+}
+
 body {
   margin: 0;
 }
@@ -41,32 +58,20 @@ body {
   font-family: "Product Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  color: var(--sec-text);
 }
 
 //Global styles
 h1 {
   font-weight: 700;
-  color: #000F26;
+  color: var(--primary-text);
   margin: 0;
   letter-spacing: 0.41px;
 }
 
 h2 {
   margin: 0;
+  color: var(--primary-text);
 }
 
 ul {
@@ -117,7 +122,7 @@ ul {
 }
 
 .b-card {
-  background: #FFFFFF;
+  background: var(--white-color);
   border-radius: 4px;
 }
 </style>

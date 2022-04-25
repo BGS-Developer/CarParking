@@ -4,27 +4,87 @@
     :sidebarCategoryList="listParkings"
     @getCategorySearch="findCategoryList">
 
-    <span>Test</span>
+    <VProfileTop 
+      :imageSrc="imageSrc"
+      :title="title"
+      :tabs="tabs.list"
+      :activeTabId="tabs.activeId"
+      @changeActiveTabId="setActiveTabId" />
 
-    <VCardsStatistic :list="listStatistic" :gridColumns="3" />
+    <div v-if="tabs.list[1].id === tabs.activeId">
+      Test1
+    </div>
 
-    <VInfo :data="info" />
+    <div v-else-if="tabs.list[2].id === tabs.activeId">
+      Test2
+    </div>
+
+    <div v-else-if="tabs.list[3].id === tabs.activeId">
+      Test3
+    </div>
+    
+    <div v-else>
+      <VCardsStatistic :list="listStatistic" :gridColumns="3" />
+
+      <VInfo :data="info" />
+    </div>
+
+    
   </VLayout>
 </template>
 
 <script>
 import VLayout from '@/layouts/Main'
+import VProfileTop from "@/components/page-tops/single"
 import VCardsStatistic from "@/components/cards-statistic"
 import VInfo from "@/components/parking/info"
 export default {
   name: 'Parking',
   components: {
     VLayout,
+    VProfileTop,
     VCardsStatistic,
     VInfo
   },
 
   data: () => ({
+    imageSrc: "https://st.depositphotos.com/1812648/1480/i/600/depositphotos_14802233-stock-photo-autotrucks.jpg",
+    title: "Oxford Valley",
+    tabs: {
+      list: [
+        {
+          id: 1,
+          name: 'General'
+        }, {
+          id: 2,
+          name: 'Documents'
+        }, {
+          id: 3,
+          name: 'Customers'
+        }, {
+          id: 4,
+          name: 'Notes'
+        }, {
+          id: 5,
+          name: 'Bookings',
+          disabled: true
+        }, {
+          id: 6,
+          name: 'Payments',
+          disabled: true
+        }, {
+          id: 7,
+          name: 'Parking spaces',
+          disabled: true
+        }, {
+          id: 8,
+          name: 'Rating',
+          disabled: true
+        }
+      ],
+      activeId: 1
+    },
+
     listParkings: [
       {
         id: 1,
@@ -82,6 +142,10 @@ export default {
     findCategoryList(search) {
       //TODO add request
       console.log('search', search)
+    },
+
+    setActiveTabId(id) {
+      this.tabs.activeId = id
     }
   }
 }

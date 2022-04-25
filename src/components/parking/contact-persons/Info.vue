@@ -1,6 +1,6 @@
 <template>
   <div class="b-info">
-    <VHeader2>Info</VHeader2>
+    <VTitleH2>Info</VTitleH2>
 
     <VContentDescription :title="'Description'">
       A visually pleasing design generally uses no more than 3 different sizes. Having a range of differently sized elements will not only create variety within your layout, but it will also establish a visual hierarchy (see next principle) on the page. 
@@ -18,13 +18,13 @@
 </template>
 
 <script>
-import VHeader2 from "@/components/ui/headers/h2"
+import VTitleH2 from "@/components/ui/titles/h2"
 import VContentDescription from "@/components/ui/contents/description"
 import VContentFeatures from "@/components/ui/contents/features"
 import VContentList from "@/components/ui/contents/list"
 export default {
   components: {
-    VHeader2,
+    VTitleH2,
     VContentDescription,
     VContentFeatures,
     VContentList

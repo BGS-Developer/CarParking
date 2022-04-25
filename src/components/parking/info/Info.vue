@@ -1,6 +1,6 @@
 <template>
   <div class="b-info">
-    <VHeader2>Info</VHeader2>
+    <VTitleH2>Info</VTitleH2>
 
     <VContentDescription :title="'Description'">
       A visually pleasing design generally uses no more than 3 different sizes. Having a range of differently sized elements will not only create variety within your layout, but it will also establish a visual hierarchy (see next principle) on the page. 
@@ -32,7 +32,7 @@
 
 
     <VContentDescription :title="'Instructions'"> 
-      Watch out for different rules and restrictions when there's big sporting events, festivals like Glastonbury or a big concert. It could mean parking is only allowed for residents during the event or over a weekend. In some cases, parking could even be completely suspended for everyone.
+      Watch out for different rules and restrictions when there's big sporting events, festivals like Glastonbury or a big concert. It could mean parking is only allowed for residents during the event or over a weekend. In some cases, parking could even be completely suspended for everyone.<br/>
       In the weeks leading up to an event that’s expected to cause disruption, the local councils should usually have signs up explaining what’s going to change.
     </VContentDescription>
 
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import VHeader2 from "@/components/ui/headers/h2"
+import VTitleH2 from "@/components/ui/titles/h2"
 import VContentIconsWrapper from "@/components/ui/contents/_elements/icons-wrapper"
 import VContentIconWrapper from "@/components/ui/contents/_elements/icon-wrapper"
 import { VIconShower, VIconBed, VIconRoundClock, VIconEat, VIconLamp } from "@/components/svg-icons"
@@ -55,7 +55,7 @@ import VContentDescription from "@/components/ui/contents/description"
 import VContentList from "@/components/ui/contents/list"
 export default {
   components: {
-    VHeader2,
+    VTitleH2,
     VContentIconsWrapper,
     VContentIconWrapper,
     VIconShower,
