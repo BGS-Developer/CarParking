@@ -23,7 +23,8 @@
     <div v-else>
       <VCardsStatistic :list="listStatistic" :gridColumns="3" />
 
-      <VContactPersons />
+      <VContactPersons
+        :data="contactPersons" />
 
       <VInfo :data="info" />
     </div>
@@ -53,6 +54,30 @@ export default {
       title: "Oxford Valley",
       address: "500 S Lombard Rd, Unit A Addison, IL 60101"
     },
+
+    contactPersons: [
+      {
+        id: 1,
+        name: 'Ivan Muratov',
+        position: 'Manager #1',
+        phone: '+3138260022',
+        email: 'alexterr@gmail.com'
+      },
+      {
+        id: 2,
+        name: 'Ivan Muratov',
+        position: 'Manager #1',
+        phone: '+3138260022',
+        email: 'alexterr@gmail.com'
+      },
+      {
+        id: 3,
+        name: 'Ivan Muratov',
+        position: 'Manager #1',
+        phone: '+3138260022',
+        email: 'alexterr@gmail.com'
+      }
+    ],
 
     tabs: {
       list: [

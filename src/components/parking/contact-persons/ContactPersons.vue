@@ -1,19 +1,19 @@
 <template>
-  <div class="b-contact-persons">
-    <VTitleH2>Contact persons</VTitleH2>
-
+  <div class="contact-persons">
     <VTableContact
-      class="table"
-      :data="data" />
+      :data="data"
+      :columns="columns"
+      :textButtonAdd="'Add person'"
+      hasHeader
+      @add="addPerson"
+      @sendEmail="sendEmail"/>
   </div>
 </template>
 
 <script>
-import VTitleH2 from "@/components/ui/titles/h2"
 import VTableContact from "@/components/ui/tables/contact"
 export default {
   components: {
-    VTitleH2,
     VTableContact
   },
 
@@ -25,33 +25,44 @@ export default {
   },
 
   data: () => ({
-    columns: {
-      name: {
-        name: "",
-        type: "text",
+    columns: [
+      {
+        id: 1,
+        name: 'Name',
+        fieldName: "name",
+        type: "name",
       },
-      position: {
-        name: "",
-        type: "text",
+      {
+        id: 2,
+        name: 'Position',
+        fieldName: "position",
+        type: "position",
       },
-      phone: {
-        name: "",
-        type: "text",
+      {
+        id: 3,
+        name: 'Phone',
+        fieldName: "phone",
+        type: "phone",
       },
-      email: {
-        name: "",
-        type: "text",
-      },
+      {
+        id: 4,
+        name: 'Email',
+        fieldName: "email",
+        type: "email",
+      }
+    ]
+  }),
+
+  methods: {
+    addPerson() {
+
+    },
+    sendEmail(item) {
+      alert(`Letter sent to mail: ${item.email}`)
     }
-  })
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.b-contact-persons {
-  padding: 12px 24px;
-}
-.table {
-  margin-top: 16px;
-}
 </style>
