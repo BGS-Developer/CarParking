@@ -20,6 +20,8 @@
     <div v-else>
       <VCardsStatistic 
         :list="listStatistic" />
+
+      <VTableParkings :data="parkings" />
     </div>
   </VLayout>
 </template>
@@ -28,12 +30,14 @@
 import VLayout from '@/layouts/Main'
 import VProfileTop from "@/components/page-tops/category"
 import VCardsStatistic from "@/components/cards-statistic"
+import VTableParkings from "@/components/parkings/table-parkings"
 export default {
   name: 'Parkings',
   components: {
     VLayout,
     VProfileTop,
-    VCardsStatistic
+    VCardsStatistic,
+    VTableParkings
   },
 
   data: () => ({
@@ -83,7 +87,31 @@ export default {
         status: 'failure',
         hasEdit: true
       }
-    ]
+    ],
+
+    parkings: [
+      {
+        id: 1,
+        name: 'Ivan Muratov',
+        position: 'Manager #1',
+        phone: '+3138260022',
+        email: 'alexterr@gmail.com'
+      },
+      {
+        id: 2,
+        name: 'Ivan Muratov',
+        position: 'Manager #1',
+        phone: '+3138260022',
+        email: 'alexterr@gmail.com'
+      },
+      {
+        id: 3,
+        name: 'Ivan Muratov',
+        position: 'Manager #1',
+        phone: '+3138260022',
+        email: 'alexterr@gmail.com'
+      }
+    ],
   }),
 
   methods: {

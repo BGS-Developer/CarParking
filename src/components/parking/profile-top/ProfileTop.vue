@@ -44,7 +44,7 @@ import VButtonStatus from "@/components/ui/buttons/status"
 import { VIconLocation } from "@/components/svg-icons"
 import VButtonSelect from "@/components/ui/buttons/select"
 import VActionsGroup from "@/components/ui/actions-group"
-import VDropdownWithDots from "@/components/dropdowns/with-dots"
+import VDropdownWithDots from "@/components/ui/dropdowns/with-dots"
 import VButtonWithoutBg from "@/components/ui/buttons/without-bg"
 export default {
   components: {

@@ -57,9 +57,9 @@ export default {
   height: 14px;
 }
 .icon-arrow {
-  margin-top: 1px;
+  margin-top: 2px;
 }
 .text {
-  margin: 0 6px 0 10px;
+  margin: 1px 6px 0 10px;
 }
 </style>

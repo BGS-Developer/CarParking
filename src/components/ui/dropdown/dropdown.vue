@@ -1,5 +1,5 @@
 <template>
-    <div @keyup.esc="close" ref="button" class="dropdown">
+    <div @keyup.esc="close" ref="button" :class="['dropdown', {'opened': open}]">
         <div class="dropdown__button" @click="toggle()">
             <slot name="button"></slot>
         </div>

@@ -30,6 +30,7 @@
   --graphic-color: #B9C4E1;
   --alert: #FBF2F1;
   --icons-default: #8193AE;
+  --icons-actions: #b5c0d0;
   --white-bg: #FFF;
   --white-text: #FFF;
   --border-color: #B5C0D0;
@@ -43,6 +44,7 @@
 
 body {
   margin: 0;
+  font-size: 14px;
 }
 
 *::-webkit-scrollbar {
@@ -127,7 +129,7 @@ ul {
 }
 
 .b-card {
-  background: var(--white-bg);
+  background-color: var(--white-bg);
   border-radius: 4px;
 }
 </style>

@@ -44,11 +44,12 @@ export default {
     border: 1px solid #6195f6;
     background: #6195f6;
   }
-}
+} 
 .icon {
   width: 16px;
   height: 16px;
   margin-right: 8px;
+  color: #FFFFFF;
 }
 .text {
   line-height: 18px;

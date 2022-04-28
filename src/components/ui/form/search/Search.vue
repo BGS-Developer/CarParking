@@ -1,5 +1,5 @@
 <template>
-    <div class="input-search-wrapper b-card">
+    <div :class="['input-search-wrapper b-card', {'border': hasBorder}, {'gray': hasGray}]">
         <div class="icon-search-wrapper">
             <VIconSearch
                 class="icon-search" />
@@ -32,7 +32,9 @@ export default {
         placeholder: {
             type: String,
             default: 'Search...'
-        }
+        },
+        hasBorder: Boolean,
+        hasGray: Boolean
     },
 
     methods: {
@@ -67,6 +69,15 @@ export default {
         display: flex;
         height: 40px;
         overflow: hidden;
+
+        &.border {
+            border: 1px solid var(--bg-color);
+        }
+        &.gray {
+            .icon-search-wrapper, .input-search {
+                background-color: var(--bg-color);
+            }
+        }
     }
 }
 .icon-search-wrapper {

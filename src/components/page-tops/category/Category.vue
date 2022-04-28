@@ -27,7 +27,7 @@
 <script>
 import VTabs from "@/components/ui/tabs"
 import { VButtonPrimary } from "@/components/ui/buttons"
-import VDropdownWithDots from "@/components/dropdowns/with-dots"
+import VDropdownWithDots from "@/components/ui/dropdowns/with-dots"
 export default {
   components: {
     VTabs,

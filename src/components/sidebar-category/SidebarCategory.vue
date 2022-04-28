@@ -42,8 +42,8 @@
 
 <script>
 import { VIconMenu } from "@/components/svg-icons"
-import VButtonBackPage from "@/components/button-back-page"
-import VSearch from "@/components/ui/search"
+import VButtonBackPage from "@/components/ui/button-back-page"
+import VSearch from "@/components/ui/form/search"
 import VMenu from "./menu"
 export default {
   components: {
