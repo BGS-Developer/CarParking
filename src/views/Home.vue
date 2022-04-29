@@ -1,6 +1,8 @@
 <template>
   <VLayout>
-      
+    <div>
+      <RouterView />
+    </div>
   </VLayout>
 </template>
 

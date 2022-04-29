@@ -10,11 +10,33 @@ Vue.use(VueRouter)
     path: paths.home,
     name: 'Home',
     component: Home
-  }, {
-    path: paths.parkings,
-    name: 'My parkings',
-    component: () => import('@/views/parkings/index')
-  }, {
+  }, 
+  
+  
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Home,
+    children: [
+      {
+        path: `/admin/${paths.parkings}`,
+        name: 'My parkings',
+        component: () => import('@/views/parkings/index'),
+      },
+      {
+        path: '/:id',
+        name: 'Parking',
+        meta: {
+          categoryName: "Parkings",
+          categoryUrl: paths.parkings
+        },
+        component: {
+          default: () => import('@/views/parkings/_id'),
+          // content: () => import('@/views/parkings/_id')
+        }
+      }
+    ]
+  }, /* {
     path: paths.parking,
     name: 'Parking',
     meta: {
@@ -22,7 +44,7 @@ Vue.use(VueRouter)
       categoryUrl: paths.parkings
     },
     component: () => import('@/views/parkings/_id')
-  }, {
+  }, */ {
     path: paths.parkingsSpaces,
     name: 'Parkings Spaces',
     component: () => import('@/views/parkings/index')

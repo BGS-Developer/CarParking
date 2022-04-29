@@ -13,8 +13,10 @@ export default {
 <style lang="scss" scoped>
 .cell-head {
   color: var(--primary-text);
-  font-weight: 700;
+  font-weight: 400;
   padding: 9px 8px;
-  text-align: center;
+  text-align: left;
+  font-size: 12px;
+  line-height: 16px;
 }
 </style>

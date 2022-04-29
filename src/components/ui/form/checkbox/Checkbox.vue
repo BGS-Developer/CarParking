@@ -1,5 +1,5 @@
 <template>
-  <div class="input-checkbox-wrapper" @click.stop.prevent="toggle">
+  <div :class="['input-checkbox-wrapper', {'empty-name': !name.length}]" @click.stop.prevent="toggle">
     <label class="input-checkbox" >
       <input type="checkbox" :value="value" :checked="value">
       <span>{{ name }}</span>
@@ -33,7 +33,15 @@ export default {
 
 <style lang="scss" scoped>
 .input-checkbox-wrapper {
-  
+  &.empty-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .input-checkbox {
+      width: 16px;
+    }
+  }
 }
 
 .input-checkbox {

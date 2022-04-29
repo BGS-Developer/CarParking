@@ -1,5 +1,6 @@
 <template>
-  <VLayout>
+  <!-- <VLayout> -->
+  <div>
     <VProfileTop 
       :tabs="tabs.list" 
       :activeTabId="tabs.activeId"
@@ -23,18 +24,19 @@
 
       <VTableParkings :data="parkings" />
     </div>
-  </VLayout>
+  </div>
+  <!-- </VLayout> -->
 </template>
 
 <script>
-import VLayout from '@/layouts/Main'
+// import VLayout from '@/layouts/Main'
 import VProfileTop from "@/components/page-tops/category"
 import VCardsStatistic from "@/components/cards-statistic"
 import VTableParkings from "@/components/parkings/table-parkings"
 export default {
   name: 'Parkings',
   components: {
-    VLayout,
+    // VLayout,
     VProfileTop,
     VCardsStatistic,
     VTableParkings
@@ -92,31 +94,29 @@ export default {
     parkings: [
       {
         id: 1,
-        name: 'Ivan Muratov',
-        position: 'Manager #1',
+        name: 'Easkarton Shopping Mall',
+        address: '706 N Washington, DE 19801',
+        occupancy: '70/500',
         phone: '+3138260022',
-        email: 'alexterr@gmail.com'
-      },
-      {
-        id: 2,
-        name: 'Ivan Muratov',
-        position: 'Manager #1',
-        phone: '+3138260022',
-        email: 'alexterr@gmail.com'
-      },
-      {
-        id: 3,
-        name: 'Ivan Muratov',
-        position: 'Manager #1',
-        phone: '+3138260022',
-        email: 'alexterr@gmail.com'
+        email: 'exampleem@gmail.com',
+        contact_person: 'Person Name'
       }
     ],
   }),
 
+  created() {
+    this.addLinkForParkings()
+  },
+
   methods: {
     setActiveTabId(id) {
       this.tabs.activeId = id
+    },
+
+    addLinkForParkings() {
+      this.parkings.forEach(item => {
+        item.linkUrl = `/parkings/${item.id}`
+      })
     }
   }
 }

@@ -60,9 +60,6 @@ export default {
     },
     print() {
       this.$emit('print')
-    },
-    customise() {
-      this.$emit('customise')
     }
   },
 

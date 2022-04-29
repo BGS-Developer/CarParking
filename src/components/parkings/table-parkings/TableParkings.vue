@@ -1,5 +1,6 @@
 <template>
   <VTable
+    :data="data"
     :filters="filters"
     :columns="columns"
     :actions="actions" />
@@ -35,30 +36,45 @@ export default {
     columns: [
       {
         id: 1,
-        name: 'Name',
+        name: 'Parking name',
         fieldName: "name",
-        type: "name",
+        type: "link",
+        fieldUrl: "linkUrl",
         isActive: true
       },
       {
         id: 2,
-        name: 'Position',
-        fieldName: "position",
-        type: "position",
+        name: 'Address',
+        fieldName: "address",
+        type: "address",
         isActive: true
       },
       {
         id: 3,
+        name: 'Occupancy',
+        fieldName: "occupancy",
+        type: "text",
+        isActive: true
+      },
+      {
+        id: 4,
         name: 'Phone',
         fieldName: "phone",
         type: "phone",
         isActive: true
       },
       {
-        id: 4,
+        id: 5,
         name: 'Email',
         fieldName: "email",
         type: "email",
+        isActive: true
+      },
+      {
+        id: 6,
+        name: 'Contact person',
+        fieldName: "contact_person",
+        type: "text",
         isActive: true
       }
     ],
