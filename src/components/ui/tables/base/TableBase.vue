@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrapper">
-    <div class="filter">
+    <div class="table-wrapper__top">
       <VFilters
         :filters="filters"
         :columns="columns" />
@@ -13,7 +13,8 @@
         @customise="customise" />
     </div>
     
-    <div class="">
+    <div class="table-wrapper__content"
+      :style="`height: calc(100vh - ${indent})`">
       <table class="table">
         <tr class="tr-head">
           <VCellHeadCheckbox />
@@ -48,16 +49,20 @@
         </VLayoutRow>
       </table>
     </div>
+
+    <VPagination class="table-wrapper__bottom" />
   </div>
 </template>
 
 <script>
 import VLayoutRow from "./../LayoutRow"
 import VCellActions from "@/components/ui/tables/_cells/body/Actions"
+import VPagination from "@/components/ui/pagination"
 export default {
   components: {
     VLayoutRow,
     VCellActions,
+    VPagination,
 
     VFilters: () => import("@/components/ui/filters"),
     VActions: () => import("@/components/ui/actions"),
@@ -98,6 +103,10 @@ export default {
     actions: {
       type: Array,
       default: () => []
+    },
+    indent: {
+      type: String,
+      default: '0'
     }
   },
 
@@ -123,12 +132,31 @@ export default {
 
 <style lang="scss" scoped>
 .table-wrapper {
-  padding: 16px 24px 0;
-  .filter {
+
+  &__top {
+    padding: 16px 24px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 32px;
+  } 
+  
+  &__content {
+    padding: 0 24px 4px;
+    overflow-y: auto;
+  }
+
+  &__bottom {
+
+  }
+
+  .button-add {
+    width: auto;
+    background: transparent;
+    color: var(--sec-text);
+    padding: 4px;
+    &:hover {
+      color: var(--border-color);
+    }
   }
 }
 
@@ -136,27 +164,14 @@ export default {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  &-wrapper {
-    padding: 12px 24px;
-    &__top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    .button-add {
-      width: auto;
-      background: transparent;
-      color: var(--sec-text);
-      padding: 4px;
-      &:hover {
-        color: var(--border-color);
-      }
-    }
-  }
 
   .tr-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
     th {
+      background-color: #fff;
       border-top: 1px solid var(--border-color-40);
       border-bottom: 1px solid var(--border-color-40);
       &:first-child {

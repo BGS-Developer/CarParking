@@ -28,8 +28,8 @@
       <template v-if="isActive">
         <div class="search-wrapper">
           <VSearch 
-            :value.sync="search"
-            @change="$emit('getSearch', search)"  />
+            :value.sync="searchString"
+            @change="fetch"  />
         </div>
 
         <VMenu 
@@ -54,9 +54,9 @@ export default {
   },
 
   props: {
-    list: {
-      type: Array,
-      default: () => []
+    category: {
+      type: Object,
+      default: () => ({})
     },
     isActive: {
       type: Boolean,
@@ -65,21 +65,32 @@ export default {
   },
 
   data: () => ({
-    search: '',
+    searchString: '',
   }),
 
   methods: {
+    fetch(searchString) {
+      this.$store.dispatch(`${this.category.storeModuleName}/fetchList`, {
+        search: searchString
+      })
+    },
+
     toggleIsActive() {
       this.$emit('change', !this.isActive)
     }
   },
 
   computed: {
-    categoryName() {
-      return this.$route.meta && this.$route.meta.categoryName
+    list() {
+      return this.$store.getters[`${this.category.storeModuleName}/list`] 
     },
+
+    categoryName() {
+      return this.category.name
+    },
+
     categoryUrl() {
-      return this.$route.meta && this.$route.meta.categoryUrl
+      return this.category.url
     }
   }
 }

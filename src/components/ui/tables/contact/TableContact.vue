@@ -29,6 +29,7 @@
           :key="column.id" 
           :is="`v-cell-body-${column.type}`"
           :value="row[column.fieldName]"
+          :hasSend="true"
           @sendEmail="emitSendEmail(row)" />
       </VLayoutRow>
     </table>

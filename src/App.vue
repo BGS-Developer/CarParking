@@ -40,11 +40,14 @@
   --highlight-green: #22C18F;
   --ratings: #F6D757;
   --error: #EC424C;
+  --pagination-bg: #F6F7FB;
 }
 
 body {
   margin: 0;
   font-size: 14px;
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 *::-webkit-scrollbar {

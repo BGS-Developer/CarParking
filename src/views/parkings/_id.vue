@@ -1,9 +1,10 @@
 <template>
-  <VLayout 
+  <!-- <VLayout 
     hasSidebarCategory 
     :sidebarCategoryList="listParkings"
-    @getCategorySearch="findCategoryList">
+    @getCategorySearch="findCategoryList"> -->
 
+  <div>
     <VProfileTop
       :data="data"
       :tabs="tabs" />
@@ -28,11 +29,13 @@
 
       <VInfo :data="info" />
     </div>
-  </VLayout>
+
+  </div>
+  <!-- </VLayout> -->
 </template>
 
 <script>
-import VLayout from '@/layouts/Main'
+// import VLayout from '@/layouts/Main'
 import VProfileTop from "@/components/parking/profile-top"
 import VCardsStatistic from "@/components/cards-statistic"
 import VContactPersons from "@/components/parking/contact-persons"
@@ -41,7 +44,7 @@ import VInfo from "@/components/parking/info"
 export default {
   name: 'Parking',
   components: {
-    VLayout,
+    // VLayout,
     VProfileTop,
     VCardsStatistic,
     VContactPersons,
@@ -113,35 +116,6 @@ export default {
       ],
       activeId: 1
     },
-
-    listParkings: [
-      {
-        id: 1,
-        url: '/parkings/1',
-        name: 'Oxford Valley',
-        description: '10 Blair Road, Glen Waverley, Vic...'
-      }, {
-        id: 2,
-        url: '/parkings/2',
-        name: 'Ashton',
-        description: '10 Blair Road, Glen Waverley, Vic...'
-      }, {
-        id: 3,
-        url: '/parkings/3',
-        name: 'Easkarton Shopping Mall',
-        description: '10 Blair Road, Glen Waverley, Vic...'
-      }, {
-        id: 4,
-        url: '/parkings/4',
-        name: 'Oxford Valley (New)',
-        description: '10 Blair Road, Glen Waverley, Vic...'
-      }, {
-        id: 5,
-        url: '/parkings/5',
-        name: 'Parking Name',
-        description: '10 Blair Road, Glen Waverley, Vic...'
-      }
-    ],
 
     listStatistic: [
       {

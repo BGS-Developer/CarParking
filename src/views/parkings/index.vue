@@ -1,5 +1,4 @@
 <template>
-  <!-- <VLayout> -->
   <div>
     <VProfileTop 
       :tabs="tabs.list" 
@@ -25,18 +24,15 @@
       <VTableParkings :data="parkings" />
     </div>
   </div>
-  <!-- </VLayout> -->
 </template>
 
 <script>
-// import VLayout from '@/layouts/Main'
 import VProfileTop from "@/components/page-tops/category"
 import VCardsStatistic from "@/components/cards-statistic"
 import VTableParkings from "@/components/parkings/table-parkings"
 export default {
   name: 'Parkings',
   components: {
-    // VLayout,
     VProfileTop,
     VCardsStatistic,
     VTableParkings
@@ -95,6 +91,60 @@ export default {
       {
         id: 1,
         name: 'Easkarton Shopping Mall',
+        address: '706 N Washington, DE 19801',
+        occupancy: '70/500',
+        phone: '+3138260022',
+        email: 'exampleem@gmail.com',
+        contact_person: 'Person Name'
+      },
+      {
+        id: 2,
+        name: 'Ashton',
+        address: '706 N Washington, DE 19801',
+        occupancy: '70/500',
+        phone: '+3138260022',
+        email: 'exampleem@gmail.com',
+        contact_person: 'Person Name'
+      },
+      {
+        id: 3,
+        name: 'Ashton 2',
+        address: '706 N Washington, DE 19801',
+        occupancy: '70/500',
+        phone: '+3138260022',
+        email: 'exampleem@gmail.com',
+        contact_person: 'Person Name'
+      },
+      {
+        id: 4,
+        name: 'Ashton 3',
+        address: '706 N Washington, DE 19801',
+        occupancy: '70/500',
+        phone: '+3138260022',
+        email: 'exampleem@gmail.com',
+        contact_person: 'Person Name'
+      },
+      {
+        id: 5,
+        name: 'Ashton 4',
+        address: '706 N Washington, DE 19801',
+        occupancy: '70/500',
+        phone: '+3138260022',
+        email: 'exampleem@gmail.com',
+        contact_person: 'Person Name'
+      },
+      {
+        id: 6,
+        name: 'Ashton 5',
+        address: '706 N Washington, DE 19801',
+        occupancy: '70/500',
+        phone: '+3138260022',
+        email: 'exampleem@gmail.com',
+        contact_person: 'Person Name'
+      },
+      {
+        id: 7,
+        name: 'Ashton 6',
         address: '706 N Washington, DE 19801',
         occupancy: '70/500',
         phone: '+3138260022',

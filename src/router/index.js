@@ -9,50 +9,43 @@ Vue.use(VueRouter)
   {
     path: paths.home,
     name: 'Home',
-    component: Home
-  }, 
-  
-  
-  {
-    path: '/admin',
-    name: 'Admin',
     component: Home,
     children: [
       {
-        path: `/admin/${paths.parkings}`,
+        path: paths.parkings,
         name: 'My parkings',
         component: () => import('@/views/parkings/index'),
       },
       {
-        path: '/:id',
+        path: paths.parking,
         name: 'Parking',
         meta: {
-          categoryName: "Parkings",
-          categoryUrl: paths.parkings
+          category: {
+            hasSidebar: true,
+            name: 'Parkings',
+            url: paths.parkings,
+            storeModuleName: 'Parkings'
+          }
+          // categoryName: "Parkings",
+          // categoryUrl: paths.parkings,
+          // hasSidebarCategory: true,
+          // storeModuleNameForCategory: 'parkings'
         },
-        component: {
-          default: () => import('@/views/parkings/_id'),
-          // content: () => import('@/views/parkings/_id')
-        }
+        component: () => import('@/views/parkings/_id')
       }
     ]
-  }, /* {
-    path: paths.parking,
-    name: 'Parking',
-    meta: {
-      categoryName: "Parkings",
-      categoryUrl: paths.parkings
-    },
-    component: () => import('@/views/parkings/_id')
-  }, */ {
+  }, 
+  {
     path: paths.parkingsSpaces,
     name: 'Parkings Spaces',
     component: () => import('@/views/parkings/index')
-  }, {
+  }, 
+  {
     path: paths.leads,
     name: 'Leads',
     component: () => import('@/views/parkings/index')
-  }, {
+  }, 
+  {
     path: paths.customers,
     name: 'Customers',
     component: () => import('@/views/parkings/index')

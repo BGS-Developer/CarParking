@@ -5,7 +5,7 @@
         {{ value }}
       </span>
 
-      <span class="button-send-email" @click="sendEmail">
+      <span v-if="hasSend" class="button-send-email" @click="sendEmail">
         Send email
       </span>
     </div>
@@ -16,6 +16,10 @@
 import mixin from "./_mixin"
 export default {
   mixins: [mixin],
+
+  props: {
+    hasSend: Boolean
+  },
 
   methods: {
     sendEmail() {

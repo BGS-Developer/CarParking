@@ -1,8 +1,8 @@
 <template>
   <VLayout>
-    <div>
+    <transition name="fade" mode="out-in">
       <RouterView />
-    </div>
+    </transition>
   </VLayout>
 </template>
 
@@ -12,10 +12,15 @@ export default {
   name: 'Home',
   components: {
     VLayout
-  },
-
-  data: () => ({
-  })
+  }
 }
 </script>
 
+<style lang="scss" scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .4s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>

@@ -7,14 +7,16 @@
         :isActive="sidebarOpened"
         @change="toggleOpenedSidebar" />
 
-      <VSidebarCategory
-        v-if="hasSidebarCategory"
-        class="sidebar"
-        :style="`width: ${sidebarCategoryWidth}`"
-        :list="sidebarCategoryList"
-        :isActive="sidebarCategoryOpened"
-        @change="toggleOpenedSidebarCategory"
-        @getSearch="$emit('getCategorySearch', $event)" />
+      <transition name="fade" mode="out-in">
+        <VSidebarCategory
+          v-if="hasSidebarCategory"
+          class="sidebar"
+          :style="`width: ${sidebarCategoryWidth}`"
+          :category="category"
+          :isActive="sidebarCategoryOpened"
+          @change="toggleOpenedSidebarCategory"
+          @getSearch="$emit('getCategorySearch', $event)" /> <!-- :list="sidebarCategoryList" -->
+        </transition>
     </div>
 
     <div class="main-content" :style="contentWidth">
@@ -38,13 +40,12 @@ export default {
     VHeader
   },
 
-  props: {
-    hasSidebarCategory: Boolean,
+  /* props: {
     sidebarCategoryList: {
       type: Array,
       default: () => []
     }
-  },
+  }, */
 
   data: () => ({
     sidebarOpened: true,
@@ -78,30 +79,39 @@ export default {
 
   computed: {
     sidebarWidth() {
-      return this.sidebarOpened ? '256px' : '64px'
+      return this.sidebarOpened ? '256px' : '68px'
     },
 
     sidebarCategoryWidth() {
       return this.hasSidebarCategory
-        ? this.sidebarCategoryOpened ? '236px' : '52px'
+        ? this.sidebarCategoryOpened ? '240px' : '52px'
         : '0px'
     },
 
     contentWidth() {
-      return `width: calc(100% - ${this.sidebarWidth} - ${this.sidebarCategoryWidth})`
+      return 'width: 100%' /* `width: calc(100% - ${this.sidebarWidth} - ${this.sidebarCategoryWidth})` */
+    },
+
+    category() {
+      return this.$route.meta.category
+    },
+
+    hasSidebarCategory() {
+      return this.category && this.category.hasSidebar
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: width .3s !important;
+  }
+  .fade-enter, .fade-leave-to {
+    width: 0 !important;
+  }
   .main-layout {
     display: flex;
-    &.active {
-      .main-content, .sidebar {
-        transition: width .6s;
-      }
-    }
   } 
   .main-content, .sidebar {
     transition: width .5s;

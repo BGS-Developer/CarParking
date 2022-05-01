@@ -3,7 +3,8 @@
     :data="data"
     :filters="filters"
     :columns="columns"
-    :actions="actions" />
+    :actions="actions"
+    :indent="'375px'" />
 </template>
 
 <script>

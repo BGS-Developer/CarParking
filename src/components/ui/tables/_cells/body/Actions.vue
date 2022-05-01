@@ -42,6 +42,9 @@ export default {
 
 <style lang="scss" scoped>
 .cell-text {
-  color: var(--primary-text);
+  color: var(--icons-default);
+  &:hover {
+    color: var(--primary-text);
+  }
 }
 </style>
