@@ -1,15 +1,23 @@
 <template>
   <VTable
-    :data="data"
+    :data="parkings"
     :filters="filters"
     :columns="columns"
     :actions="actions"
-    :indent="'375px'" />
+    :indent="'375px'"
+    :isLoaded="isLoaded"
+    @changeFilters="reFetchTableDate" />
 </template>
 
 <script>
-import FILTERS_TYPES from "@/constants/filters-types"
+import { mapState, mapGetters, mapActions } from 'vuex'
+
+import {filterSearch, filterShowRows, filterPage} from "@/components/ui/filters/filtersList"
+import ROUTER_PATHS from "@/constants/router-paths"
 import ACTIONS_TYPES from "@/constants/actions-types"
+
+import convertParamsToFilter from "@/helpers/setFiltersFromQueryParams"
+import convertFilterToParams from "@/helpers/convertFilterToParams"
 
 import VTable from "@/components/ui/tables/base"
 
@@ -18,20 +26,12 @@ export default {
     VTable
   },
 
-  props: {
-    data: {
-      type: Array,
-      default: () => []
-    }
-  },
-
   data: () => ({
+
     filters: [
-      {
-        id: 1,
-        type: FILTERS_TYPES.search,
-        value: ''
-      }
+      filterSearch,
+      filterShowRows,
+      filterPage
     ],
 
     columns: [
@@ -92,6 +92,46 @@ export default {
         type: ACTIONS_TYPES.customise
       }, 
     ],
-  })
+  }),
+
+  created() {
+    convertParamsToFilter(this.filters)
+    this.fetchTableDate()
+  },
+
+  methods: {
+    ...mapActions({
+      fetchParkingsList: 'Parkings/fetchList'
+    }),
+
+    reFetchTableDate() {
+      this.setUrlParams()
+      this.fetchTableDate()
+    },
+
+    fetchTableDate() {
+      const queryParams = convertFilterToParams(this.filters)
+
+      this.fetchParkingsList(queryParams)
+    },
+
+    setUrlParams() {
+      const queryParams = convertFilterToParams(this.filters)
+
+      this.$router.replace({ 
+        path: ROUTER_PATHS.parkings,
+        query: queryParams })
+    }
+  },
+
+  computed: {
+    ...mapState({
+      isLoaded: state => state.Parkings.isLoaded
+    }),
+
+    ...mapGetters({
+      parkings: 'Parkings/list',
+    })
+  }
 }
 </script>

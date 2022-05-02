@@ -1,5 +1,5 @@
 <template>
-  <RouterLink :to="url" :class="['list-item']">
+  <RouterLink :to="linkUrl" :class="['list-item']">
     <div class="list-item__inner">
       
       <div class="name truncate" >
@@ -20,7 +20,7 @@ export default {
   },
 
   props: {
-    url: {
+    linkUrl: {
       type: String,
       default: ''
     },

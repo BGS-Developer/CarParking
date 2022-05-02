@@ -9,8 +9,8 @@
             class="input-search"
             :value="value"
             :placeholder="placeholder"
-            @input="emit($event.target.value)"
-            @change="$emit('change', $event.target.value)">
+            @input="emitInput($event.target.value)"
+            @change="emitChange($event.target.value)">
         
         <div v-show="value" class="icon-close-wrapper">
             <VIconClose 
@@ -38,12 +38,16 @@ export default {
     },
 
     methods: {
-        emit(value) {
+        emitInput(value) {
             this.$emit('update:value', value);
             this.$emit('input', value)
         },
+        emitChange(value) {
+            this.$emit('update:value', value);
+            this.$emit('change', value)
+        },
         reset() {
-            this.emit('')
+            this.emitChange('')
         }
     }
 }

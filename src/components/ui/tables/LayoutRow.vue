@@ -16,6 +16,7 @@ export default {
 .row-body {
   &.clickable {
     cursor: pointer;
+    transition: background-color 0.3s;
     
     &:hover {
       background-color: var(--bg-color);

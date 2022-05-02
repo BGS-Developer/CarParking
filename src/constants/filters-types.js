@@ -1,3 +1,5 @@
 export default {
-  search: 'search'
+  search: 'search',
+  show_rows: 'show_rows',
+  page: 'page'
 }

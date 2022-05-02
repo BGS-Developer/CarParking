@@ -1,9 +1,4 @@
 <template>
-  <!-- <VLayout 
-    hasSidebarCategory 
-    :sidebarCategoryList="listParkings"
-    @getCategorySearch="findCategoryList"> -->
-
   <div>
     <VProfileTop
       :data="data"
@@ -31,11 +26,11 @@
     </div>
 
   </div>
-  <!-- </VLayout> -->
 </template>
 
 <script>
-// import VLayout from '@/layouts/Main'
+import { mapState, mapGetters, mapActions } from 'vuex'
+
 import VProfileTop from "@/components/parking/profile-top"
 import VCardsStatistic from "@/components/cards-statistic"
 import VContactPersons from "@/components/parking/contact-persons"
@@ -44,7 +39,6 @@ import VInfo from "@/components/parking/info"
 export default {
   name: 'Parking',
   components: {
-    // VLayout,
     VProfileTop,
     VCardsStatistic,
     VContactPersons,
@@ -142,10 +136,24 @@ export default {
   }),
 
   methods: {
+    ...mapActions({
+      fetchParkingData: 'Parking/fetchData'
+    }),
+
     findCategoryList(search) {
       //TODO add request
       console.log('search', search)
     },
+  },
+
+  computed: {
+    ...mapState({
+      isLoaded: state => state.Parking.isLoaded
+    }),
+
+    ...mapGetters({
+      parking: 'Parking/data',
+    })
   }
 }
 </script>

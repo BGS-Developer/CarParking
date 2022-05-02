@@ -26,10 +26,6 @@ Vue.use(VueRouter)
             url: paths.parkings,
             storeModuleName: 'Parkings'
           }
-          // categoryName: "Parkings",
-          // categoryUrl: paths.parkings,
-          // hasSidebarCategory: true,
-          // storeModuleNameForCategory: 'parkings'
         },
         component: () => import('@/views/parkings/_id')
       }

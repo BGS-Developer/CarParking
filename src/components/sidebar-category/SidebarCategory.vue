@@ -68,10 +68,14 @@ export default {
     searchString: '',
   }),
 
+  created() {
+    this.fetch()
+  },
+
   methods: {
-    fetch(searchString) {
+    fetch() {
       this.$store.dispatch(`${this.category.storeModuleName}/fetchList`, {
-        search: searchString
+        search: this.searchString
       })
     },
 

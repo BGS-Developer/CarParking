@@ -1,7 +1,8 @@
 <template>
   <VCellLayout class="cell-checkbox" width="50px">
     <VCheckbox
-      :value.sync="value" />
+      :value="value"
+      @change="emitValue" />
   </VCellLayout>
 </template>
 
@@ -13,6 +14,19 @@ export default {
 
   components: {
     VCheckbox
+  },
+
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  methods: {
+    emitValue(e) {
+      this.$emit('change', e)
+    }
   }
 }
 </script>

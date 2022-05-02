@@ -14,7 +14,8 @@ export default {
 
   props: {
     value: {
-      type: Boolean
+      type: Boolean,
+      default: false
     },
     name: {
       type: String,

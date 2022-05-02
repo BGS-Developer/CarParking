@@ -7,7 +7,7 @@
         :isActive="sidebarOpened"
         @change="toggleOpenedSidebar" />
 
-      <transition name="fade" mode="out-in">
+      <transition name="set-width" mode="out-in">
         <VSidebarCategory
           v-if="hasSidebarCategory"
           class="sidebar"
@@ -104,10 +104,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .fade-enter-active, .fade-leave-active {
+  .set-width-enter-active, .set-width-leave-active {
     transition: width .3s !important;
   }
-  .fade-enter, .fade-leave-to {
+  .set-width-enter, .set-width-leave-to {
     width: 0 !important;
   }
   .main-layout {

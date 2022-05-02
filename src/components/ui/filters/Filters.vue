@@ -4,8 +4,9 @@
       <div class="filter" v-for="filter in filters" :key="filter.id">
         <VSearch 
           v-if="filter.type === filtersTypes.search"
-          :value="filter.value"
-          hasGray />
+          :value.sync="filter.value"
+          hasGray
+          @change="emit" />
 
       </div>
 
@@ -28,6 +29,12 @@ export default {
     filters: {
       type: Array,
       default: () => []
+    }
+  },
+
+  methods: {
+    emit() {
+      this.$emit('change')
     }
   },
 

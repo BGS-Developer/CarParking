@@ -1,4 +1,4 @@
-import routePaths from "@/router/paths"
+import routePaths from "@/constants/router-paths"
 export default {
   namespaced: true,
   state: {

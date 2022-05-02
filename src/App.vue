@@ -124,6 +124,14 @@ ul {
   }
 }
 
+// Transition animation
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 .fade-fast-enter-active, .fade-fast-leave-active {
   transition: opacity .18s;
 }

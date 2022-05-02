@@ -3,7 +3,8 @@
     <div class="table-wrapper__top">
       <VFilters
         :filters="filters"
-        :columns="columns" />
+        :columns="columns"
+        @change="changeFilters" />
 
       <VActions 
         :actions="actions"
@@ -13,44 +14,59 @@
         @customise="customise" />
     </div>
     
-    <div class="table-wrapper__content"
+    <div 
+      class="table-wrapper__content"
       :style="`height: calc(100vh - ${indent})`">
-      <table class="table">
-        <tr class="tr-head">
-          <VCellHeadCheckbox />
 
-          <component
-            v-for="column in columns" 
-            :key="column.id" 
-            :is="`v-cell-head-${column.type}`"
-            :value="column.name" />
+      <div class="content-inner">
+        <table class="table">
+          <tr class="tr-head">
+            <VCellHeadCheckbox 
+              :value="isSelectedAllRows"
+              @change="toggleRowsIsSelected" />
 
-          <VCellHeadText />
-        </tr>
+            <component
+              v-for="column in columns" 
+              :key="column.id" 
+              v-show="column.isActive"
+              :is="`v-cell-head-${column.type}`"
+              :value="column.name" />
 
-        <VLayoutRow 
-          class="tr-body"
-          v-for="row in data" 
-          :key="row.id"
-          isClickable
-          @click.native="selectItem(row)" >
+            <VCellHeadText />
+          </tr>
 
-          <VCellBodyCheckbox />
+          <VLayoutRow 
+            class="tr-body"
+            v-for="row in dateTable" 
+            :key="row.id"
+            isClickable
+            @click.native="selectItem(row)" >
 
-          <component
-            v-for="column in columns" 
-            :key="column.id" 
-            :is="`v-cell-body-${column.type}`"
-            :value="row[column.fieldName]"
-            :url="row[column.fieldUrl]"
-            @sendEmail="emitSendEmail(row)" />
+            <VCellBodyCheckbox 
+              class="cell-checkbox"
+              :value="row.isSelected"
+              @change="toggleRowIsSelected(row.id)" />
 
-          <VCellActions />
-        </VLayoutRow>
-      </table>
+            <component
+              v-for="column in columns" 
+              :key="column.id" 
+              v-show="column.isActive"
+              :is="`v-cell-body-${column.type}`"
+              :value="row[column.fieldName]"
+              :url="row[column.fieldUrl]"
+              @sendEmail="emitSendEmail(row)" />
+
+            <VCellActions />
+          </VLayoutRow>
+        </table>
+      </div>
+
+      <VPreloader v-show="!isLoaded" isFixed />
     </div>
 
-    <VPagination class="table-wrapper__bottom" />
+    <VPagination class="table-wrapper__bottom"
+      :filters="filters"
+      @change="changeFilters" />
   </div>
 </template>
 
@@ -58,11 +74,13 @@
 import VLayoutRow from "./../LayoutRow"
 import VCellActions from "@/components/ui/tables/_cells/body/Actions"
 import VPagination from "@/components/ui/pagination"
+import VPreloader from "@/components/ui/preloader"
 export default {
   components: {
     VLayoutRow,
     VCellActions,
     VPagination,
+    VPreloader,
 
     VFilters: () => import("@/components/ui/filters"),
     VActions: () => import("@/components/ui/actions"),
@@ -107,14 +125,53 @@ export default {
     indent: {
       type: String,
       default: '0'
+    },
+    isLoaded: {
+      type: Boolean,
+      default: false
     }
   },
 
+  data: () => ({
+    selectedRowsIds: []
+  }),
+
   methods: {
+    changeFilters() {
+      this.$emit('changeFilters')
+    },
+
     selectItem() {
       /* if (this.isClickable) {
         this.$emit('selectItem', item)  
       } */
+    },
+
+    toggleRowsIsSelected() {
+      if (this.isSelectedAllRows) {
+        this.selectedRowsIds = []
+      }
+      else {
+        this.selectedRowsIds = []
+        this.data.forEach(item => {
+          this.selectedRowsIds.push(item.id)
+        })
+      }
+    },
+
+    toggleRowIsSelected(id) {
+      const index = this.selectedRowsIds.indexOf(id)
+
+      if (index >= 0) {
+        this.selectedRowsIds.splice(index, 1)        
+      }
+      else {
+        this.selectedRowsIds.push(id)
+      }
+    },
+
+    emitSelectedRows() {
+      this.$emit('changeSelectedRows', this.selectedRowsIds)
     },
     
     download() {
@@ -125,6 +182,19 @@ export default {
     },
     customise() {
 
+    }
+  },
+
+  computed: {
+    dateTable() {
+      return this.data.map(item => ({
+        ...item,
+        isSelected: this.selectedRowsIds.includes(item.id)
+      }))
+    },
+
+    isSelectedAllRows() {
+      return this.selectedRowsIds.length === this.data.length
     }
   }
 }
@@ -142,11 +212,13 @@ export default {
   
   &__content {
     padding: 0 24px 4px;
-    overflow-y: auto;
-  }
+    overflow-y: hidden;
+    position: relative;
 
-  &__bottom {
-
+    .content-inner {
+      overflow-y: auto;
+      height: inherit;
+    }
   }
 
   .button-add {
@@ -190,6 +262,21 @@ export default {
   .tr-body {
     td {
       border-bottom: 1px solid var(--border-color-40);
+    }
+
+    ::v-deep {
+      .input-checkbox {
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+    }
+
+    &:hover {
+      ::v-deep {
+        .input-checkbox {
+          opacity: 1;
+        }
+      }
     }
   }
 }

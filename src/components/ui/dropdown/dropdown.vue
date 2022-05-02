@@ -7,7 +7,7 @@
         <transition name="fade-fast">
             <div v-show="open" ref="content"
                 class="dropdown__content"
-                :class="[placement, fixed ? 'fixed' : 'absolute', contentClasses, `w-${widthContent}`, `min-w-${minWidthContent}`]"
+                :class="[placement, placementY, fixed ? 'fixed' : 'absolute', contentClasses, `w-${widthContent}`, `min-w-${minWidthContent}`]"
                 :style="style">
 
                 <slot name="content"></slot>
@@ -23,6 +23,10 @@
             placement: {
                 type: String,
                 default: 'right'
+            },
+            placementY: {
+                type: String,
+                default: ''
             },
             contentClasses: {
                 type: String
@@ -132,6 +136,9 @@
         }
         &.right {
             right: 0
+        }
+        &.bottom {
+            bottom: 30px;
         }
     }
 }

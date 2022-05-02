@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import routePaths from "@/router/paths"
+import routePaths from "@/constants/router-paths"
 export default {
   props: {
     text: {
