@@ -1,6 +1,6 @@
 <template>
 <transition name="fade">
-  <div :class="['preloader-wrapper', {'fixed': isFixed}]">
+  <div :class="['preloader-wrapper', {'absolute': isAbsolute}]">
     <div class="la-square-jelly-box">
       <div></div>
       <div></div>
@@ -12,7 +12,7 @@
 <script>
 export default {
   props: {
-    isFixed: {
+    isAbsolute: {
       type: Boolean,
       default: false
     }
@@ -29,7 +29,7 @@ export default {
   justify-content: center;
   align-items: center;
   transition: .5s;
-  &.fixed {
+  &.absolute {
     position: absolute;
     top: 0;
     left: 0;

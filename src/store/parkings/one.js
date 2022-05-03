@@ -43,4 +43,10 @@ export default {
       })
     },
   },
+
+  getters: {
+    data(state) {
+      return state.data
+    }
+  }
 }

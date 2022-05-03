@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="page-parking">
     <VProfileTop
-      :data="data"
+      :data="parkingData"
       :tabs="tabs" />
 
     <div v-if="tabs.list[1].id === tabs.activeId">
@@ -20,11 +20,12 @@
       <VCardsStatistic :list="listStatistic" :gridColumns="3" />
 
       <VContactPersons
-        :data="contactPersons" />
+        :data="parkingData.contact_persons" />
 
       <VInfo :data="info" />
     </div>
 
+    <VPreloader v-show="!isLoaded" isAbsolute />
   </div>
 </template>
 
@@ -35,6 +36,7 @@ import VProfileTop from "@/components/parking/profile-top"
 import VCardsStatistic from "@/components/cards-statistic"
 import VContactPersons from "@/components/parking/contact-persons"
 import VInfo from "@/components/parking/info"
+import VPreloader from "@/components/ui/preloader"
 
 export default {
   name: 'Parking',
@@ -43,14 +45,15 @@ export default {
     VCardsStatistic,
     VContactPersons,
     VInfo,
+    VPreloader
   },
 
   data: () => ({
-    data: {
+    /* data: {
       imageSrc: "https://st.depositphotos.com/1812648/1480/i/600/depositphotos_14802233-stock-photo-autotrucks.jpg",
       title: "Oxford Valley",
       address: "500 S Lombard Rd, Unit A Addison, IL 60101"
-    },
+    }, */
 
     contactPersons: [
       {
@@ -152,9 +155,17 @@ export default {
     }),
 
     ...mapGetters({
-      parking: 'Parking/data',
+      parkingData: 'Parking/data',
     })
+  },
+
+  watch: {
+    '$route.path': {
+      immediate: true,
+      handler() {
+        this.fetchParkingData()
+      }
+    }
   }
 }
 </script>
-

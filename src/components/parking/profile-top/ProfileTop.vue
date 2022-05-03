@@ -1,7 +1,7 @@
 <template>
   <VProfileTop 
     :imageSrc="data.imageSrc"
-    :title="data.title"
+    :title="data.name"
     :tabs="tabs.list"
     :activeTabId="tabs.activeId"
     @changeActiveTabId="setActiveTabId">

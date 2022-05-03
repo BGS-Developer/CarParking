@@ -15,15 +15,17 @@
           :category="category"
           :isActive="sidebarCategoryOpened"
           @change="toggleOpenedSidebarCategory"
-          @getSearch="$emit('getCategorySearch', $event)" /> <!-- :list="sidebarCategoryList" -->
+          @getSearch="$emit('getCategorySearch', $event)" />
         </transition>
     </div>
 
-    <div class="main-content" :style="contentWidth">
+    <div class="main-content">
       <VHeader />
 
-      <div class="main-content__inner">
-        <slot />
+      <div class="main-content__inner" >
+        <div ref="main-content-inner">
+          <slot />
+        </div>
       </div>
     </div>
   </div>
@@ -39,13 +41,6 @@ export default {
     VSidebarCategory,
     VHeader
   },
-
-  /* props: {
-    sidebarCategoryList: {
-      type: Array,
-      default: () => []
-    }
-  }, */
 
   data: () => ({
     sidebarOpened: true,
@@ -88,16 +83,20 @@ export default {
         : '0px'
     },
 
-    contentWidth() {
-      return 'width: 100%' /* `width: calc(100% - ${this.sidebarWidth} - ${this.sidebarCategoryWidth})` */
-    },
-
     category() {
       return this.$route.meta.category
     },
 
     hasSidebarCategory() {
       return this.category && this.category.hasSidebar
+    }
+  },
+
+  watch: {
+    '$route.path': {
+      handler() {
+        this.$scrollToTop(this.$refs['main-content-inner'])
+      }
     }
   }
 }
@@ -120,9 +119,16 @@ export default {
     display: flex;
   }
   .main-content {
+    width: 100%;
     &__inner {
-      overflow-y: auto;
-      height: calc(100vh - 63px)
+      position: relative;
+      overflow-y: hidden;
+      height: calc(100vh - 63px);
+
+      & > div {
+        overflow-y: auto;
+        height: inherit;
+      }
     }
   }
 </style>

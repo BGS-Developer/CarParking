@@ -61,7 +61,7 @@
         </table>
       </div>
 
-      <VPreloader v-show="!isLoaded" isFixed />
+      <VPreloader v-show="!isLoaded" isAbsolute />
     </div>
 
     <VPagination class="table-wrapper__bottom"

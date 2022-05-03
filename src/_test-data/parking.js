@@ -5,11 +5,11 @@ export default {
   address: '500 S Lombard Rd, Unit A Addison, IL 60101',
   rate: '5.0',
   analytics: {
-    currentRevenue: 298,
-    availableSpaces: 40,
-    allSpaces: 364
+    current_revenue: 298,
+    available_spaces: 40,
+    all_spaces: 364
   },
-  contactPersons: [
+  contact_persons: [
     {
       id: 1,
       name: 'Ivan Muratov',
