@@ -76,12 +76,12 @@ export default {
         display: none;
         width: 8px;
         height: 8px;
-        background: #EC424C;
-        border: 2px solid #051c3f;
+        background: var(--error);
+        border: 2px solid var(--primary);
         border-radius: 50%;
       }
       .icon {
-        color: #B5C0D0;
+        color: var(--border-color);
       }
     }
 
@@ -99,7 +99,7 @@ export default {
         }
       }
       .icon {
-        color: #72A2F8;
+        color: var(--highlight-dm);
       }
     }
   }
@@ -113,10 +113,10 @@ export default {
       background: #182d4e;
     }
     .text {
-      color: #72A2F8;
+      color: var(--highlight-dm);
     }
     .icon {
-      color: #72A2F8;
+      color: var(--highlight-dm);
     }
   }
 }
@@ -128,7 +128,7 @@ export default {
 }
 
 .icon {
-  color: #52647E;
+  color: var(--sec-text);
   min-width: 20px;
 }
 
@@ -137,7 +137,7 @@ export default {
   font-size: 16px;
   letter-spacing: 0.25px;
   line-height: 20px;
-  color: #fff;
+  color: var(--white-bg);
   font-style: normal;
   font-weight: 400;
   white-space: nowrap;

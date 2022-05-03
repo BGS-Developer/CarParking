@@ -34,11 +34,11 @@ export default {
   align-items: center;
   flex-wrap: nowrap;
   padding: 12px 16px;
-  background: #3879F0;
+  background: var(--highlight);
   box-shadow: 0px 2px 4px rgba(5, 28, 63, 0.1);
   border-radius: 4px;
 
-  color: #fff;
+  color: var(--white-bg);
   font-family: 'Product Sans';
   font-style: normal;
   font-weight: 700;
@@ -46,7 +46,7 @@ export default {
   line-height: 16px;
   letter-spacing: 0.02em;
   &:hover {
-    background: #4981e9;
+    background: var(--highlight-dm);
   }
   svg {
     min-width: 16px;

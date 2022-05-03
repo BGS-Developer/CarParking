@@ -29,7 +29,7 @@ export default {
   width: 170px;
   font-size: 16px;
   text-align: right;
-  color: #000F26;
+  color: var(--primary-text);
   padding-top: 12px;
 }
 .content {

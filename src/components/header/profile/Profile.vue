@@ -60,7 +60,7 @@ export default {
 
     .icon-arrow {
       margin-left: 6px;
-      color: #051C3F;
+      color: var(--primary);
     }
   }
   &__content {
@@ -77,12 +77,12 @@ export default {
     .name {
       font-size: 16px;
       font-weight: bold;
-      color: #051C3F;
+      color: var(--primary);
       text-align: center;
     }
 
     .email {
-      color: #52647E;
+      color: var(--sec-text);
       margin-bottom: 10px;
       text-align: center;
     }

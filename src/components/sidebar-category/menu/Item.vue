@@ -60,7 +60,7 @@ export default {
 .name {
   font-size: 14px;
   line-height: 18px;
-  color: #000F26;
+  color: var(--primary-text);
   font-weight: 400;
   white-space: nowrap;
   text-align: left;
@@ -69,6 +69,6 @@ export default {
   text-align: left;
   font-size: 12px;
   line-height: 14px;
-  color: #8193AE;
+  color: var(--icons-default);
 }
 </style>

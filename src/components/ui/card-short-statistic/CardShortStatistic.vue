@@ -90,11 +90,11 @@ export default {
   align-items: center;
   font-size: 12px;
   line-height: 16px;
-  color: #8193AE;
+  color: var(--icons-default);
   margin-bottom: 4px;
 }
 .value {
-  color: #000F26;
+  color: var(--primary-text);
   font-size: 22px;
   line-height: 20px;
 }
@@ -104,7 +104,7 @@ export default {
   align-items: flex-end;
   justify-content: flex-end;
   letter-spacing: 0.02em;
-  color: #B5C0D0;
+  color: var(--border-color);
 }
 .circle {
   margin-right: 8px;
@@ -118,7 +118,7 @@ export default {
   svg {
     width: 16;
     height: 16;
-    color: #8193AE;
+    color: var(--icons-default);
   }
   &:hover {
     svg {

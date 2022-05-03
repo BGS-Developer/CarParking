@@ -127,7 +127,7 @@ export default {
   }
   .button-open-sidebar, .button-close-sidebar {
     cursor: pointer;
-    color: #8193AE;
+    color: var(--icons-default);
     display: flex;
     justify-content: center;
     &:hover {
@@ -150,7 +150,7 @@ export default {
     font-weight: 700;
     font-size: 20px;
     line-height: 20px;
-    color: #051C3F;
+    color: var(--primary);
   }
   .search-wrapper {
     padding: 12px 16px;

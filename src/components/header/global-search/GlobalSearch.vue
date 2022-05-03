@@ -61,16 +61,16 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  color: #8193AE;
+  color: var(--icons-default);
   padding: 7px 32px 7px 12px;
-  border-top: 1px solid #B5C0D0;
-  border-right: 1px solid #B5C0D0;
-  border-bottom: 1px solid #B5C0D0;
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   border-left: 0;
   border-radius: 0 4px 4px 0;
 
   &::placeholder {
-    color: #8193AE;
+    color: var(--icons-default);
   }
 }
 .icon-close {

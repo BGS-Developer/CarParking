@@ -36,7 +36,7 @@ export default {
     text-decoration: none;
     &__text {
       margin-left: 14px;
-      color: #fff;
+      color: var(--white-bg);
       font-family: 'Product Sans';
       font-style: normal;
       font-weight: 400;

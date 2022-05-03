@@ -27,7 +27,7 @@ export default {
   align-items: center;
   width: 32px;
   height: 32px;
-  color: #051C3F;
+  color: var(--primary);
   cursor: pointer;
   &:hover {
     color: #051C3F90;

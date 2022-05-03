@@ -90,7 +90,7 @@ export default {
   }
   .button-open-sidebar, .button-close-sidebar {
     cursor: pointer;
-    color: #8193AE;
+    color: var(--icons-default);
     display: flex;
     justify-content: center;
     &:hover {

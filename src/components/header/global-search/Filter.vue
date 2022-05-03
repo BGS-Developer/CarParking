@@ -38,14 +38,14 @@ export default {
 .filter-search {
   width: 88px;
   padding: 5.5px 10px;
-  background: #F6F7FB;
-  border: 1px solid #B5C0D0;
+  background: var(--pagination-bg);
+  border: 1px solid var(--border-color);
   border-radius: 4px 0px 0px 4px;
   &__button {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #000F26;
+    color: var(--primary-text);
   }
   &__content {
     padding: 18px;

@@ -113,7 +113,7 @@ export default {
 
 <style lang="scss" scoped>
 .icon-location {
-  color: #B5C0D0;
+  color: var(--icons-actions);
   margin-right: 4px;
 }
 </style>
