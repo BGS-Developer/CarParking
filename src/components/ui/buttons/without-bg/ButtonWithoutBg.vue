@@ -4,7 +4,7 @@
       <component :is="`v-icon-${iconName}`" />
     </div>
     
-    <span>{{text}}</span>
+    <span class="text">{{text}}</span>
 
     <VNumberNotifications
       v-if="value"
@@ -44,6 +44,9 @@ export default {
   padding: 6px 16px;
   border: 1px solid transparent;
   cursor: pointer;
+}
+.text {
+  margin-top: 1px;
 }
 .icon {
   width: 16px;

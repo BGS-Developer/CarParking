@@ -1,6 +1,6 @@
 <template>
   <VCellLayout class="cell-link">
-    <RouterLink v-if="isLocalUrl" :to="`${url}`">
+    <RouterLink v-if="isLocalUrl" :to="url">
       {{ value }}
     </RouterLink>
   

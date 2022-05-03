@@ -9,7 +9,12 @@
     </div>
 
     <div class="pages">
-
+      <VPage
+        :page="activePage"
+        :size="+rowsCount"
+        :total="totalRows"
+        @prev="prevPage"
+        @next="nextPage" />
     </div>
   </div>
 </template>
@@ -17,15 +22,21 @@
 <script>
 import VSelectRows from "./select-rows"
 import FILTERS_TYPES from "@/constants/filters-types"
+import VPage from "./page"
 export default {
   components: {
-    VSelectRows
+    VSelectRows,
+    VPage
   },
 
   props: {
     filters: {
       type: Array,
       default: () => []
+    },
+    totalRows: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -34,6 +45,17 @@ export default {
       this.filterShowRows.value = value
       this.emit()
     },
+
+    prevPage() {
+      this.filterActivePage.value = (+this.filterActivePage.value - 1).toString()
+      this.emit()
+    },
+
+    nextPage() {
+      this.filterActivePage.value = (+this.filterActivePage.value + 1).toString()
+      this.emit()
+    },
+
     emit() {
       this.$emit('change')
     }
@@ -43,8 +65,14 @@ export default {
     filterShowRows() {
       return this.filters.find(filter => filter.type === FILTERS_TYPES.show_rows)
     },
+    filterActivePage() {
+      return this.filters.find(filter => filter.type === FILTERS_TYPES.page)
+    },
     rowsCount() {
       return this.filterShowRows && this.filterShowRows.value
+    },
+    activePage() {
+      return this.filterActivePage && this.filterActivePage.value && +this.filterActivePage.value || 1
     }
   }
 }

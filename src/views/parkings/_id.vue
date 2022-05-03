@@ -1,29 +1,33 @@
 <template>
   <div class="page-parking">
-    <VProfileTop
-      :data="parkingData"
-      :tabs="tabs" />
+    <template v-if="loadedPage">
+      <VProfileTop
+        :data="parkingData"
+        :tabs="tabs" />
 
-    <div v-if="tabs.list[1].id === tabs.activeId">
-      Test1
-    </div>
+      <div v-if="tabs.list[1].id === tabs.activeId">
+        Test1
+      </div>
 
-    <div v-else-if="tabs.list[2].id === tabs.activeId">
-      Test2
-    </div>
+      <div v-else-if="tabs.list[2].id === tabs.activeId">
+        Test2
+      </div>
 
-    <div v-else-if="tabs.list[3].id === tabs.activeId">
-      Test3
-    </div>
-    
-    <div v-else>
-      <VCardsStatistic :list="listStatistic" :gridColumns="3" />
+      <div v-else-if="tabs.list[3].id === tabs.activeId">
+        Test3
+      </div>
+      
+      <div v-else>
+        <VCardsStatistic 
+          :list="listStatistic" 
+          :gridColumns="3" />
 
-      <VContactPersons
-        :data="parkingData.contact_persons" />
+        <VContactPersons
+          :data="parkingData.contact_persons" />
 
-      <VInfo :data="info" />
-    </div>
+        <VInfo />
+      </div>
+    </template>
 
     <VPreloader v-show="!isLoaded" isAbsolute />
   </div>
@@ -49,36 +53,6 @@ export default {
   },
 
   data: () => ({
-    /* data: {
-      imageSrc: "https://st.depositphotos.com/1812648/1480/i/600/depositphotos_14802233-stock-photo-autotrucks.jpg",
-      title: "Oxford Valley",
-      address: "500 S Lombard Rd, Unit A Addison, IL 60101"
-    }, */
-
-    contactPersons: [
-      {
-        id: 1,
-        name: 'Ivan Muratov',
-        position: 'Manager #1',
-        phone: '+3138260022',
-        email: 'alexterr@gmail.com'
-      },
-      {
-        id: 2,
-        name: 'Ivan Muratov',
-        position: 'Manager #1',
-        phone: '+3138260022',
-        email: 'alexterr@gmail.com'
-      },
-      {
-        id: 3,
-        name: 'Ivan Muratov',
-        position: 'Manager #1',
-        phone: '+3138260022',
-        email: 'alexterr@gmail.com'
-      }
-    ],
-
     tabs: {
       list: [
         {
@@ -114,28 +88,7 @@ export default {
       activeId: 1
     },
 
-    listStatistic: [
-      {
-        id: 1,
-        name: 'Current revenue',
-        value: 298
-      }, {
-        id: 2,
-        name: 'Available spaces',
-        value: 40,
-        status: 'success'
-      }, {
-        id: 3,
-        name: 'All spaces',
-        value: 364,
-        status: 'default',
-        hasEdit: true
-      }
-    ],
-
-    info: {
-
-    }
+    loadedPage: false
   }),
 
   methods: {
@@ -146,7 +99,7 @@ export default {
     findCategoryList(search) {
       //TODO add request
       console.log('search', search)
-    },
+    }
   },
 
   computed: {
@@ -156,7 +109,28 @@ export default {
 
     ...mapGetters({
       parkingData: 'Parking/data',
-    })
+    }),
+
+    listStatistic() {
+      return [
+        {
+          id: 1,
+          name: 'Current revenue',
+          value: this.parkingData && this.parkingData.analytics &&  this.parkingData.analytics.current_revenue
+        }, {
+          id: 2,
+          name: 'Available spaces',
+          value: this.parkingData && this.parkingData.analytics && this.parkingData.analytics.available_spaces,
+          status: 'success'
+        }, {
+          id: 3,
+          name: 'All spaces',
+          value: this.parkingData && this.parkingData.analytics && this.parkingData.analytics.all_spaces,
+          status: 'default',
+          hasEdit: true
+        }
+      ]
+    },
   },
 
   watch: {
@@ -165,6 +139,10 @@ export default {
       handler() {
         this.fetchParkingData()
       }
+    },
+
+    isLoaded() {
+      this.loadedPage = true
     }
   }
 }

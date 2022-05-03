@@ -3,8 +3,10 @@
     :data="parkings"
     :filters="filters"
     :columns="columns"
-    :actions="actions"
+    :actionsTable="actionsTable"
+    :actionsRow="actionsRow"
     :indent="'375px'"
+    :totalRows="totalRows"
     :isLoaded="isLoaded"
     @changeFilters="reFetchTableDate" />
 </template>
@@ -12,9 +14,10 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 
-import {filterSearch, filterShowRows, filterPage} from "@/components/ui/filters/filtersList"
+import { filterSearch, filterShowRows, filterPage } from "@/components/ui/filters/filtersList"
 import ROUTER_PATHS from "@/constants/router-paths"
 import ACTIONS_TYPES from "@/constants/actions-types"
+import { actionOpen, actionEdit, actionCopyLink, actionPinToTop, actionMakeInactive } from "@/constants/lists/actions-row"
 
 import convertParamsToFilter from "@/helpers/setFiltersFromQueryParams"
 import convertFilterToParams from "@/helpers/convertFilterToParams"
@@ -80,7 +83,7 @@ export default {
       }
     ],
 
-    actions: [
+    actionsTable: [
       {
         id: 1,
         type: ACTIONS_TYPES.download
@@ -92,6 +95,26 @@ export default {
         type: ACTIONS_TYPES.customise
       }, 
     ],
+
+    actionsRow: [
+      {
+        ...actionOpen,
+        disabled: true
+      }, 
+      {
+        ...actionEdit,
+        disabled: true
+      }, 
+      actionCopyLink, 
+      {
+        ...actionPinToTop,
+        disabled: true
+      },
+      {
+        ...actionMakeInactive,
+        disabled: true
+      }
+    ]
   }),
 
   created() {
@@ -126,6 +149,7 @@ export default {
 
   computed: {
     ...mapState({
+      totalRows: state => state.Parkings.totalRows,
       isLoaded: state => state.Parkings.isLoaded
     }),
 

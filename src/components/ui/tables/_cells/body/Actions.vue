@@ -3,7 +3,8 @@
     <VDropdownWithDots 
       class="dropdown-dots" 
       :list="list"
-      isClosesAfterSelection />
+      isClosesAfterSelection
+      @change="select" />
   </VCellLayout>
 </template>
 
@@ -17,26 +18,22 @@ export default {
     VDropdownWithDots
   },
 
-  data: () => ({
-    list: [
-      {
-        id: 1,
-        name: 'Open'
-      }, {
-        id: 2,
-        name: 'Edit'
-      }, {
-        id: 3,
-        name: 'Copy link'
-      }, {
-        id: 4,
-        name: 'Pin to top'
-      }, {
-        id: 5,
-        name: 'Make inactive'
+  props: {
+    list: {
+      type: Array,
+      default: () => []
+    }
+  },
+
+  methods: {
+    select(id) {
+      const action = this.list.find(item => item.id === id)
+
+      if (action && action.key) {
+        this.$emit(action.key)
       }
-    ]
-  })
+    }
+  }
 }
 </script>
 

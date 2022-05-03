@@ -29,10 +29,11 @@ export default {
             params
           })
           .then(response => {
-            ctx.commit('SET_DATA', /* response.data.data */ testParkingData)
+            
 
             // TODO: remove setTimeout after add real request
             setTimeout(() => {
+              ctx.commit('SET_DATA', /* response.data.data */ testParkingData)
               ctx.commit('SET_IS_LOADED', true)
               resolve(response);
             }, 500)

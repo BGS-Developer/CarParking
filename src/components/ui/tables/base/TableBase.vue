@@ -7,7 +7,7 @@
         @change="changeFilters" />
 
       <VActions 
-        :actions="actions"
+        :actions="actionsTable"
         :columns="columns"
         @download="download"
         @print="print"
@@ -39,8 +39,7 @@
             class="tr-body"
             v-for="row in dateTable" 
             :key="row.id"
-            isClickable
-            @click.native="selectItem(row)" >
+            isClickable >
 
             <VCellBodyCheckbox 
               class="cell-checkbox"
@@ -56,7 +55,9 @@
               :url="row[column.fieldUrl]"
               @sendEmail="emitSendEmail(row)" />
 
-            <VCellActions />
+            <VCellActions
+              :list="actionsRow"
+              @copyLink="copyLink(row)" />
           </VLayoutRow>
         </table>
       </div>
@@ -66,11 +67,14 @@
 
     <VPagination class="table-wrapper__bottom"
       :filters="filters"
+      :totalRows="totalRows"
       @change="changeFilters" />
   </div>
 </template>
 
 <script>
+import copyToClipboard from "@/helpers/copyToClipboard"
+
 import VLayoutRow from "./../LayoutRow"
 import VCellActions from "@/components/ui/tables/_cells/body/Actions"
 import VPagination from "@/components/ui/pagination"
@@ -118,7 +122,11 @@ export default {
       type: Array,
       default: () => []
     },
-    actions: {
+    actionsTable: {
+      type: Array,
+      default: () => []
+    },
+    actionsRow: {
       type: Array,
       default: () => []
     },
@@ -129,6 +137,10 @@ export default {
     isLoaded: {
       type: Boolean,
       default: false
+    },
+    totalRows: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -139,12 +151,6 @@ export default {
   methods: {
     changeFilters() {
       this.$emit('changeFilters')
-    },
-
-    selectItem() {
-      /* if (this.isClickable) {
-        this.$emit('selectItem', item)  
-      } */
     },
 
     toggleRowsIsSelected() {
@@ -174,6 +180,7 @@ export default {
       this.$emit('changeSelectedRows', this.selectedRowsIds)
     },
     
+    // Actions table
     download() {
 
     },
@@ -181,6 +188,35 @@ export default {
 
     },
     customise() {
+
+    },
+
+    // Actions row
+    open() {
+      this.$emit('open')
+    },
+
+    edit() {
+
+    },
+
+    copyLink(row) {
+      const url = row.linkUrl
+        ? row.linkUrl[0] === '/'
+          ? `${location.origin}${row.linkUrl}`
+          : row.linkUrl
+        : location.href
+        
+      copyToClipboard(url)
+
+      alert(`The ${url} has been copied to the clipboard`)
+    },
+
+    pinToTop() {
+
+    },
+
+    makeInactive() {
 
     }
   },

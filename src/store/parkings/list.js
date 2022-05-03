@@ -8,12 +8,16 @@ export default {
 
   state: {
     list: [],
+    totalRows: 0,
     isLoaded: false
   },
 
   mutations: {
     SET_LIST(state, list) {
       state.list = list
+    },
+    SET_TOTAL(state, total) {
+      state.totalRows = total
     },
     SET_IS_LOADED(state, isLoaded = false) {
       state.isLoaded = isLoaded
@@ -31,7 +35,8 @@ export default {
             params
           })
           .then(response => {
-            ctx.commit('SET_LIST', /* response.data.data */ testParkingsData)
+            ctx.commit('SET_LIST', /* response.data.data */ testParkingsData.list)
+            ctx.commit('SET_TOTAL', /* response.data.data */ testParkingsData.total)
 
             // TODO: remove setTimeout after add real request
             setTimeout(() => {

@@ -9,7 +9,10 @@
     <template v-slot:content>
       <div class="dropdown-dots__content b-card">
         <ul class="list">
-          <li v-for="item in list" :key="item.id" class="list__item" @click="select(item.id)">
+          <li v-for="item in list" :key="item.id" 
+            :class="['list__item', {'disabled': item.disabled}]" 
+            @click="item.disabled ? null : select(item.id)">
+
             {{item.name}}
           </li>
         </ul>
@@ -48,10 +51,6 @@ export default {
     close() {
       this.$refs.dropdown.close()
     }
-  },
-
-  computed: {
-    
   }
 }
 </script>
@@ -77,10 +76,14 @@ export default {
   &__item {
     height: 36px;
     padding: 9px 10px;
-    color: #000F26;
+    color: var(--primary-text);
     cursor: pointer;
     &:hover {
       background: #F6F7FB;
+    }
+    &.disabled {
+      color: var(--sec-text);
+      cursor: default;
     }
   }
 }

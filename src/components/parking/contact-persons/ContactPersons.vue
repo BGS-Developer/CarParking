@@ -1,10 +1,10 @@
 <template>
   <div class="contact-persons">
     <VTableContact
+      :title="'Сontact persons'"
       :data="data"
       :columns="columns"
       :textButtonAdd="'Add person'"
-      hasHeader
       @add="addPerson"
       @sendEmail="sendEmail"/>
   </div>
@@ -55,7 +55,7 @@ export default {
 
   methods: {
     addPerson() {
-
+      alert('Open modal')
     },
     sendEmail(item) {
       alert(`Letter sent to mail: ${item.email}`)
@@ -63,6 +63,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

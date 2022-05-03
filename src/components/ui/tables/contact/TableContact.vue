@@ -1,12 +1,13 @@
 <template>
   <div class="table-wrapper">
     <div class="table-wrapper__top">
-      <VTitleH2>Contact persons</VTitleH2>
+      <VTitleH2>{{title}}</VTitleH2>
 
       <VButtonAdd 
         class="button-add"
         :text="textButtonAdd"
-        :iconName="'add'" />
+        :iconName="'add'"
+        @click.native="emitAdd" />
     </div>
 
     <table class="table">
@@ -60,6 +61,10 @@ export default {
   },
 
   props: {
+    title: {
+      type: String,
+      default: ''
+    },
     data: {
       type: Array,
       default: () => []
@@ -84,6 +89,9 @@ export default {
     },
     emitSendEmail(item) {
       this.$emit('sendEmail', item)
+    },
+    emitAdd() {
+      this.$emit('add')
     }
   }
 }
